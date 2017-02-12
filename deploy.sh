@@ -6,7 +6,6 @@ GH_PAGES=gh-pages
 DIST_PATH=dist
 
 function xandeerBuild() {
-  xandeerPrepare
   npm install
   npm run build
 }
@@ -22,5 +21,5 @@ function xandeerPush() {
   git branch ${GH_PAGES}
   git checkout ${GH_PAGES}
   git remote add origin "https://${GH_TOKEN}@${GH_REF}"
-  git push -uf
+  git push -uf origin ${GH_PAGES}
 }
