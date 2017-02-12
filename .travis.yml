@@ -1,0 +1,23 @@
+language: node_js
+node_js: stable
+
+# S: Build Lifecycle
+install:
+
+#before_script:
+  - source ./deploy.sh
+
+script:
+  - xandeerBuild
+
+after_script:
+  - xandeerPush
+# E: Build LifeCycle
+
+branches:
+  only:
+    - dev
+
+env:
+ global:
+    - GH_REF: github.com/xandeer/100-days-of-code.git
