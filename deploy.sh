@@ -19,6 +19,8 @@ function xandeerPush() {
   git config user.email "kkxandeer@gmail.com"
   git add --all
   git commit -m "update"
+  git branch ${GH_PAGES}
+  git checkout ${GH_PAGES}
   git remote add origin "https://${GH_TOKEN}@${GH_REF}"
-  git push --force origin:${GH_PAGES}
+  git push -uf
 }
