@@ -2,7 +2,7 @@
 
 ROOT=`pwd`
 PUBLIC=${ROOT}/public
-GH_PAGES=${ROOT}/gh-pages
+GH_PAGES=gh-pages
 DIST_PATH=dist
 
 function xandeerBuild() {
