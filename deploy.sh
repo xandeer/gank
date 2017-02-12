@@ -14,10 +14,11 @@ function xandeerBuild() {
 function xandeerPush() {
   cd ${DIST_PATH}
   git init
+  git config --global push.default simple
   git config user.name "xandeer"
   git config user.email "kkxandeer@gmail.com"
   git add --all
   git commit -m "update"
-  git remote add origin "https://${GH_TOKEN}@${GH_REF}" -t ${GH_PAGES}
-  git push --force origin
+  git remote add origin "https://${GH_TOKEN}@${GH_REF}"
+  git push --force origin:${GH_PAGES}
 }
