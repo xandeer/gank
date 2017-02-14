@@ -20,4 +20,4 @@ branches:
 
 env:
  global:
-    - GH_REF: github.com/xandeer/zhihu-daily.git
+    - GH_REF: github.com/xandeer/gank.git
