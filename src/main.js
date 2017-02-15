@@ -6,6 +6,7 @@ import MintUI from 'mint-ui';
 import 'mint-ui/lib/style.css';
 import App from './App';
 import router from './router';
+import store from './store';
 
 Vue.use(VueResource);
 Vue.use(MintUI);
@@ -14,6 +15,7 @@ Vue.use(MintUI);
 new Vue({
   el: '#app',
   router,
+  store,
   template: '<App/>',
   components: {
     App,

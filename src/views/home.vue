@@ -1,35 +1,30 @@
 <template lang='pug'>
 #home
-  .beauty
-    img(:src='beauty !== null ? beauty.url : ""')
-    p {{date}}
-  contents(:type='type')
+  mt-tabbar.fixed-top(v-model='selected', :style='theme')
+    mt-tab-item(id="home", href='#/home') 首页
+    mt-tab-item(id="front-end", href='#/home/front-end') 前端
+    mt-tab-item(id="ios", href='#/home/ios') iOS
+    mt-tab-item(id="android", href='#/home/android') Android
+    //- mt-tab-item(id="welfare", icon='more', href='#/home/welfare') 福利
+    //- mt-button(icon='more')
+  .container
+    router-view
 </template>
 
 <script>
-import contents from 'components/contents';
+import { mapGetters } from 'vuex';
 
 export default {
   name: 'home',
   data() {
     return {
-      beauty: null,
-      type: 'all',
+      selected: 'home',
     };
   },
   computed: {
-    date() {
-      const date = new Date(this.beauty && this.beauty.publishedAt);
-      return `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`;
-    },
-  },
-  components: {
-    contents,
-  },
-  created() {
-    this.$http.get('http://gank.io/api/data/福利/1/1').then((response) => {
-      this.beauty = response.body.results[0];
-    });
+    ...mapGetters([
+      'theme',
+    ]),
   },
 };
 </script>
@@ -38,19 +33,16 @@ export default {
 #home {
   width: 100vw;
 }
-.beauty {
-  position: relative;
-  img {
-    width: 100%;
-  }
 
-  p {
-    position: absolute;
-    display: inline-block;
-    bottom: 10px;
-    right: 10px;
-    font-size: 1.2em;
-    color: #777;
-  }
+.container {
+  padding-top: 36px;
+}
+
+.fixed-top {
+  position: fixed;
+  bottom: inherit;
+  z-index: 99;
+  box-shadow: 0 1px 2px rgba(34, 25, 25, 0.4);
+  background-position: left bottom;
 }
 </style>

@@ -1,17 +1,17 @@
 <template lang='pug'>
-.results(v-infinite-scroll="loadMore", infinite-scroll-disabled="busy", infinite-scroll-distance="10")
+.results(v-infinite-scroll="loadMore", infinite-scroll-disabled="isLoading", infinite-scroll-distance="10")
   ul
     li(v-for='item in datas', v-if='item.type !== "福利"')
       a(:href='item.url')
-        p {{item.desc}}
+        p(:style='{ color: color }') {{item.desc}}
         p.info {{item.who}} · {{howLongAgo(item.publishedAt)}}
-    li(v-for='item in datas', v-if='type === "福利"')
-      //- .imgContainer
-      img(:src='item.url')
+    li(v-for='item in datas', v-if='type === "welfare"')
+      img(v-lazy='item.url')
 </template>
 
 <script>
-import date from 'utils/date';
+import { mapState, mapGetters } from 'vuex';
+import { howLongAgo } from 'utils/date';
 
 export default {
   name: 'contents',
@@ -21,11 +21,23 @@ export default {
       require: true,
     },
   },
+  computed: {
+    ...mapState([
+      'isLoading',
+    ]),
+    datas() {
+      return this.$store.state[this.type].datas;
+    },
+    ...mapGetters([
+      'theme',
+    ]),
+    color() {
+      return this.theme.color;
+    },
+  },
   data() {
     return {
-      datas: [],
       page: 1,
-      busy: false,
     };
   },
   methods: {
@@ -33,19 +45,11 @@ export default {
       const ele = event.target;
       ele.style.visibility = 'hidden';
     },
-    howLongAgo: date.howLongAgo,
+    howLongAgo,
     loadTop() {
-      // this.$store.commit('UPDATE_LOADING', true);
-      this.$http.get(`http://gank.io/api/data/${this.type}/10/${this.page}`).then((response) => {
-        this.datas = this.datas.concat(response.body.results);
-        this.busy = false;
-        // this.$nextTick(() => {
-        // this.$store.commit('UPDATE_LOADING', false);
-        // });
-      });
+      this.$store.dispatch('datasAsync', this.type);
     },
     loadMore() {
-      this.busy = true;
       this.loadTop();
       this.page += 1;
     },
@@ -71,7 +75,6 @@ a {
   text-align: left;
   display: block;
   width: 100%;
-  color: #000;
 
   max-height: 200px;
   overflow: hidden;

@@ -1,13 +1,13 @@
 <template lang='pug'>
-#ios
-  contents(:type='"iOS"')
+#container-android
+  contents(:type='"android"')
 </template>
 
 <script>
 import contents from 'components/contents';
 
 export default {
-  name: 'ios',
+  name: 'android',
   components: {
     contents,
   },

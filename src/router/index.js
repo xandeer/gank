@@ -1,34 +1,43 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import Home from 'views/home';
-import FrontEnd from 'views/frontEnd';
-import IOS from 'views/ios';
-import Android from 'views/android';
-import Welfare from 'views/welfare';
+import My from 'views/my';
+import ContainerHome from 'components/home';
+import FrontEnd from 'components/frontEnd';
+import IOS from 'components/ios';
+import Android from 'components/android';
+import Welfare from 'components/welfare';
 
 Vue.use(Router);
 
 export default new Router({
   routes: [{
-    path: '/',
-    name: 'home',
+    path: '/home',
     component: Home,
+    children: [{
+      path: '',
+      component: ContainerHome,
+    }, {
+      path: 'front-end',
+      component: FrontEnd,
+    }, {
+      path: 'ios',
+      component: IOS,
+    }, {
+      path: 'android',
+      component: Android,
+    }, {
+      path: 'welfare',
+      component: Welfare,
+    }, {
+      path: '*',
+      name: 'home',
+      component: ContainerHome,
+    }],
   }, {
-    path: '/front-end',
-    name: 'frontEnd',
-    component: FrontEnd,
-  }, {
-    path: '/ios',
-    name: 'ios',
-    component: IOS,
-  }, {
-    path: '/android',
-    name: 'android',
-    component: Android,
-  }, {
-    path: '/welfare',
-    name: 'welfare',
-    component: Welfare,
+    path: '/my',
+    name: 'my',
+    component: My,
   }, {
     path: '*',
     component: Home,

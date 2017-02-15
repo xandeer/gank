@@ -1,6 +1,6 @@
 <template lang='pug'>
-#welfare
-  contents(:type='"福利"')
+#container-welfare
+  contents(:type='"welfare"')
 </template>
 
 <script>

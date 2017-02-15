@@ -18,7 +18,6 @@ function howLongAgo(str) {
   switch (true) {
     case now - date < 60 * 1000:
       ret = '刚刚';
-      ret = `${now.toTimeString()} - ${date.toTimeString()}`;
       break;
     case now - date < 60 * 60 * 1000:
       ret = `${now.getMinutes() - date.getMinutes()}分钟前`;
@@ -43,6 +42,4 @@ function howLongAgo(str) {
   return ret;
 }
 
-export default {
-  howLongAgo,
-};
+exports.howLongAgo = howLongAgo;

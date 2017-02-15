@@ -1,6 +1,6 @@
 <template lang='pug'>
-#front-end
-  contents(:type='"前端"')
+#container-frontEnd
+  contents(:type='"frontEnd"')
 </template>
 
 <script>
