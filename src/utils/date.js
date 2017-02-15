@@ -23,14 +23,15 @@ function howLongAgo(str) {
     case now - date < 60 * 60 * 1000:
       ret = `${now.getMinutes() - date.getMinutes()}分钟前`;
       break;
-    case now - date < 24 * 60 * 60 * 1000:
+    case now - date < 24 * 60 * 60 * 1000 && now.getDate() === date.getDate():
       ret = `${parseInt((now - date) / 60 / 60 / 1000, 10)}小时前`;
       break;
-    case now - date < 48 * 60 * 60 * 1000:
+    case now - date < 48 * 60 * 60 * 1000 && now.getDate() - date.getDate() ===
+    1:
       ret = '昨天';
       break;
     case now - date < 30 * 24 * 60 * 60 * 1000:
-      ret = `${parseInt((now - date) / 24 / 60 / 60 / 1000, 10)}天前`;
+      ret = `${parseInt((now - date) / 24 / 60 / 60 / 1000, 10) + 1}天前`;
       break;
     case now - date < 12 * 30 * 24 * 60 * 60 * 1000:
       ret = `${parseInt((now - date) / 30 / 24 / 60 / 60 / 1000, 10)}个月前`;

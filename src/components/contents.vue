@@ -1,8 +1,13 @@
 <template lang='pug'>
 .results(v-infinite-scroll="loadMore", infinite-scroll-disabled="busy", infinite-scroll-distance="10")
-  a(v-for='item in datas', v-if='item.type !== "福利"', :href='item.url')
-    p {{item.desc}}
-    p.info {{item.who}} · {{howLongAgo(item.publishedAt)}}
+  ul
+    li(v-for='item in datas', v-if='item.type !== "福利"')
+      a(:href='item.url')
+        p {{item.desc}}
+        p.info {{item.who}} · {{howLongAgo(item.publishedAt)}}
+    li(v-for='item in datas', v-if='type === "福利"')
+      //- .imgContainer
+      img(:src='item.url')
 </template>
 
 <script>
@@ -49,6 +54,18 @@ export default {
 </script>
 
 <style lang='scss' scoped>
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
 a {
   padding: 10px 15px;
   text-align: left;

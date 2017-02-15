@@ -1,11 +1,11 @@
 <template lang='pug'>
 #app
   mt-tabbar.fixed-top(v-model='selected')
-    mt-tab-item(id="home", href='/#/home') 首页
-    mt-tab-item(id="front-end", href='/#/front-end') 前端
-    mt-tab-item(id="ios", href='/#/ios') iOS
-    mt-tab-item(id="android", href='/#/android') Android
-    mt-tab-item(id="welfare", href='/#/welfare') 福利
+    mt-tab-item(id="home", href='#/home') 首页
+    mt-tab-item(id="front-end", href='#/front-end') 前端
+    mt-tab-item(id="ios", href='#/ios') iOS
+    mt-tab-item(id="android", href='#/android') Android
+    mt-tab-item(id="welfare", href='#/welfare') 福利
   mt-spinner.spinner(v-show='isLoading', type="fading-circle", color='#3193DE', :size='36')
   .container
     router-view
@@ -54,6 +54,7 @@ a {
   bottom: inherit;
   z-index: 99;
   border-bottom: 1px solid #888;
+  font-size: 26px;
 }
 
 .spinner {
