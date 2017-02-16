@@ -31,7 +31,6 @@ export default {
   },
   created() {
     this.$store.dispatch('beautyAsync');
-    // this.$store.dispatch('datasAsync', 'home');
   },
 };
 </script>

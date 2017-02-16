@@ -24,3 +24,11 @@ export const updateDatas = (state, {
 export const updateBeauty = (state, beauty) => {
   state.beauty = beauty;
 };
+
+export const updateHomeSelected = (state, selected) => {
+  state.homeSelected = selected;
+};
+
+export const updateRandom = (state, datas) => {
+  state.random = state.random.concat(datas);
+};

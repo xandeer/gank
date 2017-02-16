@@ -13,9 +13,9 @@ export const datasAsync = ({
         datas: response.body.results,
         type,
       });
-      // Vue.nextTick(() => {
-      commit('updateLoading', false);
-      // });
+      Vue.nextTick(() => {
+        commit('updateLoading', false);
+      });
     });
 };
 
@@ -31,4 +31,16 @@ export const beautyAsync = ({
         commit('updateLoading', false);
       });
     });
+};
+
+export const randomAsync = ({
+  commit,
+}) => {
+  commit('updateLoading', true);
+  Vue.http.get('http://gank.io/api/random/data/all/10').then((response) => {
+    commit('updateRandom', response.body.results);
+    Vue.nextTick(() => {
+      commit('updateLoading', false);
+    });
+  });
 };

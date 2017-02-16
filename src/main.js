@@ -3,6 +3,7 @@
 import Vue from 'vue';
 import VueResource from 'vue-resource';
 import MintUI from 'mint-ui';
+import VueAwesomeSwiper from 'vue-awesome-swiper';
 import 'mint-ui/lib/style.css';
 import App from './App';
 import router from './router';
@@ -10,6 +11,7 @@ import store from './store';
 
 Vue.use(VueResource);
 Vue.use(MintUI);
+Vue.use(VueAwesomeSwiper);
 
 /* eslint-disable no-new */
 new Vue({

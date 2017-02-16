@@ -10,7 +10,9 @@ const state = {
   isLoading: false,
   isNight: false,
   themeType: 'day',
+  homeSelected: 'home',
   beauty: null,
+  random: [],
   home: {
     datas: [],
     page: 1,

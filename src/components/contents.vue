@@ -26,6 +26,9 @@ export default {
       'isLoading',
     ]),
     datas() {
+      if (this.type === 'random') {
+        return this.$store.state.random;
+      }
       return this.$store.state[this.type].datas;
     },
     ...mapGetters([
@@ -35,11 +38,7 @@ export default {
       return this.theme.color;
     },
   },
-  data() {
-    return {
-      page: 1,
-    };
-  },
+
   methods: {
     err(event) {
       const ele = event.target;
@@ -47,7 +46,11 @@ export default {
     },
     howLongAgo,
     loadTop() {
-      this.$store.dispatch('datasAsync', this.type);
+      if (this.type === 'random') {
+        this.$store.dispatch('randomAsync');
+      } else {
+        this.$store.dispatch('datasAsync', this.type);
+      }
     },
     loadMore() {
       this.loadTop();
@@ -78,7 +81,8 @@ a {
 
   max-height: 200px;
   overflow: hidden;
-  box-shadow: 0 1px 1px rgba(34, 25, 25, 0.4);
+  // box-shadow: 0 1px 1px rgba(34, 25, 25, 0.4);
+  border-bottom: 1px solid #888;
   text-decoration: none;
 
   .info {
