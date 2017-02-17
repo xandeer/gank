@@ -17,26 +17,31 @@ const state = {
     datas: [],
     page: 1,
     type: 'all',
+    scrollY: 0,
   },
   frontEnd: {
     datas: [],
     page: 1,
     type: '前端',
+    scrollY: 0,
   },
   ios: {
     datas: [],
     page: 1,
     type: 'iOS',
+    scrollY: 0,
   },
   android: {
     datas: [],
     page: 1,
     type: 'Android',
+    scrollY: 0,
   },
   welfare: {
     datas: [],
     page: 1,
     type: '福利',
+    scrollY: 0,
   },
 };
 

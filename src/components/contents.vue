@@ -1,5 +1,5 @@
 <template lang='pug'>
-.results(v-infinite-scroll="loadMore", infinite-scroll-disabled="isLoading", infinite-scroll-distance="10")
+.results(v-infinite-scroll="loadMore", infinite-scroll-disabled="isLoading", infinite-scroll-distance="60")
   ul
     .beauty(v-if='type === "home"')
       img(:src='beauty !== null ? beauty.url : ""')
@@ -28,6 +28,10 @@ export default {
     ...mapState([
       'isLoading',
       'beauty',
+      'homeSelected',
+    ]),
+    ...mapGetters([
+      'theme',
     ]),
     date() {
       const date = new Date(this.beauty && this.beauty.publishedAt);
@@ -39,9 +43,6 @@ export default {
       }
       return this.$store.state[this.type].datas;
     },
-    ...mapGetters([
-      'theme',
-    ]),
     color() {
       return this.theme.color;
     },
@@ -56,17 +57,18 @@ export default {
     loadTop() {
       if (this.type === 'random') {
         this.$store.dispatch('randomAsync');
-      } else {
+      } else if (this.type === this.homeSelected) {
         this.$store.dispatch('datasAsync', this.type);
       }
     },
     loadMore() {
       this.loadTop();
-      this.page += 1;
     },
   },
   created() {
-    this.$store.dispatch('beautyAsync');
+    if (this.type === 'home' && this.beauty === null) {
+      this.$store.dispatch('beautyAsync');
+    }
   },
 };
 </script>
