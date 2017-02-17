@@ -1,8 +1,11 @@
 <template lang='pug'>
 .results(v-infinite-scroll="loadMore", infinite-scroll-disabled="isLoading", infinite-scroll-distance="10")
   ul
+    .beauty(v-if='type === "home"')
+      img(:src='beauty !== null ? beauty.url : ""')
+      p {{date}}
     li(v-for='item in datas', v-if='item.type !== "福利"')
-      a(:href='item.url')
+      a(:href='item.url', target='_blank')
         p(:style='{ color: color }') {{item.desc}}
         p.info {{item.who}} · {{howLongAgo(item.publishedAt)}}
     li(v-for='item in datas', v-if='type === "welfare"')
@@ -24,7 +27,12 @@ export default {
   computed: {
     ...mapState([
       'isLoading',
+      'beauty',
     ]),
+    date() {
+      const date = new Date(this.beauty && this.beauty.publishedAt);
+      return `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`;
+    },
     datas() {
       if (this.type === 'random') {
         return this.$store.state.random;
@@ -57,6 +65,9 @@ export default {
       this.page += 1;
     },
   },
+  created() {
+    this.$store.dispatch('beautyAsync');
+  },
 };
 </script>
 
@@ -65,6 +76,19 @@ ul {
   margin: 0;
   padding: 0;
   list-style: none;
+}
+
+.beauty {
+  position: relative;
+
+  p {
+    position: absolute;
+    display: inline-block;
+    bottom: 10px;
+    right: 10px;
+    font-size: 1.2em;
+    color: #777;
+  }
 }
 
 img {

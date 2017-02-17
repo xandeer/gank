@@ -23,7 +23,6 @@ export default {
     },
   },
 };
-
 </script>
 
 <stype lang="scss" scoped>

@@ -80,4 +80,10 @@ body {
 a {
   color: #000;
 }
+
+.mint-header {
+  height: 50px;
+  font-size: 18px;
+  letter-spacing: 0.5em;
+}
 </style>
