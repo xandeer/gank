@@ -44,7 +44,6 @@ export default {
       return this.mode.color;
     },
   },
-
   methods: {
     err(event) {
       const ele = event.target;

@@ -7,11 +7,18 @@ import getters from './getters';
 Vue.use(Vuex);
 
 const state = {
+  // 是否在请求数据
   isLoading: false,
+  // 模式选择：day | night
   modeType: 'day',
+  // 当前主题颜色索引值
   themeIndex: 0,
+  // 首页展示项：home | frontEnd | ios | android | welfare
   homeSelected: 'home',
+  // 首页美女图片信息
   beauty: null,
+
+  // 数据及页面位置缓存
   random: {
     datas: [],
     page: 1,

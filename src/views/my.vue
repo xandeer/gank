@@ -8,8 +8,12 @@
       span.mint-cell-allow-right
     a.mint-cell.theme(href='#/my/theme', :style='cellBg') 主题颜色
       span.mint-cell-allow-right
-    mt-cell(title='夜间模式', :style='cellBg')
-      mt-switch(v-model='nightSwitch')
+    a.mint-cell.mode(:style='cellBg') 夜间模式
+      mt-switch.mode-switch(v-model='nightSwitch')
+    a.mint-cell.github(href='https://github.com/xandeer', target='_blank', :style='cellBg') Xandeer's Github
+      span.mint-cell-allow-right
+    a.mint-cell.source(href='https://github.com/xandeer/gank', target='_blank', :style='cellBg') 看看源码
+      span.mint-cell-allow-right
 </template>
 
 <script>
@@ -68,21 +72,22 @@ export default {
 .mint-cell {
   text-align: left;
   background-image: none;
+  height: 48px;
+  line-height: 48px;
+  padding-left: 20px;
 }
 
-.theme {
-  line-height: 48px;
-  padding-left: 10px;
+.mint-cell-allow-right::after {
+  width: 10px;
+  height: 10px;
 }
 
 .link-gank {
   height: 100px;
   line-height: 100px;
-  padding: 0 10px;
   font-size: 20px;
   position: relative;
   margin-top: 70px;
-  margin-bottom: 20px;
 
   .circle {
     display: inline-block;
@@ -95,10 +100,24 @@ export default {
     color: #fff;
     margin-right: 20px;
   }
+}
 
-  .mint-cell-allow-right::after {
-    width: 10px;
-    height: 10px;
+.mode {
+  position: relative;
+
+  .mode-switch {
+    display: inline-block;
+    width: 52px;
+    height: 32px;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
   }
+}
+
+.github, .theme {
+  margin-top: 20px;
+  border-bottom: 1px solid #ccc;
 }
 </style>

@@ -13,6 +13,7 @@ export const updateThemeIndex = (state, index) => {
   state.themeIndex = index;
 };
 
+// 更新数据缓存
 export const updateDatas = (state, {
   type,
   datas,
@@ -25,10 +26,12 @@ export const updateBeauty = (state, beauty) => {
   state.beauty = beauty;
 };
 
+// 更新首页展示项
 export const updateHomeSelected = (state, selected) => {
   state.homeSelected = selected;
 };
 
+// 更新页面滚动位置，为下一次回到此页时定位在离开时的位置
 export const updateScrollY = (state, {
   type,
   scrollY,

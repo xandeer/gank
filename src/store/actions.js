@@ -1,4 +1,3 @@
-/* eslint-disable no-shadow, no-param-reassign */
 import Vue from 'vue';
 
 export const datasAsync = ({

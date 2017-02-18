@@ -2,7 +2,6 @@ const modes = {
   day: {
     background: '#f4f4f4',
     backgroundColor: '#f4f4f4',
-    headerBg: '#26a2ff',
     color: '#000',
     cellBg: '#fff',
   },

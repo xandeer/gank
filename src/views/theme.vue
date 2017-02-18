@@ -43,8 +43,8 @@ export default {
 }
 
 .colors-container {
-  margin-top: 50px;
-  padding-bottom: 100px;
+  margin-top: 60px;
+  padding-bottom: 110px;
   margin-right: -100px;
   padding-right: 100px;
   height: 100vh;
@@ -54,5 +54,6 @@ export default {
 .color-block {
   width: 100%;
   height: 80px;
+  border-radius: 10px;
 }
 </style>

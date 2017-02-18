@@ -3,7 +3,7 @@ import Router from 'vue-router';
 import Home from 'views/home';
 import My from 'views/my';
 import Discover from 'views/discover';
-import Theme from 'components/theme';
+import Theme from 'views/theme';
 
 Vue.use(Router);
 
