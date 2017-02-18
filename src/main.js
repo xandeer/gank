@@ -2,48 +2,37 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue';
 import VueResource from 'vue-resource';
-import MintUI from 'mint-ui';
 import VueAwesomeSwiper from 'vue-awesome-swiper';
+import {
+  InfiniteScroll,
+  Lazyload,
+  Header,
+  Tabbar,
+  TabItem,
+  Cell,
+  Spinner,
+  Switch,
+} from 'mint-ui';
 import 'mint-ui/lib/style.css';
 import App from './App';
 import router from './router';
 import store from './store';
 
 Vue.use(VueResource);
-Vue.use(MintUI);
 Vue.use(VueAwesomeSwiper);
+Vue.use(InfiniteScroll);
+Vue.use(Lazyload);
 
-// scrollBehavior:
-// - only available in html5 history mode
-// - defaults to no scroll behavior
-// - return false to prevent scroll
-const scrollBehavior = (to, from, savedPosition) => {
-  if (savedPosition) {
-    // savedPosition is only available for popstate navigations.
-    return savedPosition;
-  }
-  const position = {};
-  // new navigation.
-  // scroll to anchor by returning the selector
-  if (to.hash) {
-    position.selector = to.hash;
-  }
-  // check if any matched route config has meta that requires scrolling to top
-  if (to.matched.some(m => m.meta.scrollToTop)) {
-    // cords will be used if no selector is provided,
-    // or if the selector didn't match any element.
-    position.x = 0;
-    position.y = 0;
-  }
-  // if the returned position is falsy or an empty object,
-  // will retain current scroll position.
-  return false;
-};
+Vue.component(Header.name, Header);
+Vue.component(Tabbar.name, Tabbar);
+Vue.component(TabItem.name, TabItem);
+Vue.component(Cell.name, Cell);
+Vue.component(Spinner.name, Spinner);
+Vue.component(Switch.name, Switch);
 
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
-  scrollBehavior,
   router,
   store,
   template: '<App/>',
