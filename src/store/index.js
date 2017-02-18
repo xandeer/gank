@@ -12,7 +12,12 @@ const state = {
   themeType: 'day',
   homeSelected: 'home',
   beauty: null,
-  random: [],
+  random: {
+    datas: [],
+    page: 1,
+    type: 'random',
+    scrollY: 0,
+  },
   home: {
     datas: [],
     page: 1,

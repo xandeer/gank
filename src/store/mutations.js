@@ -29,10 +29,6 @@ export const updateHomeSelected = (state, selected) => {
   state.homeSelected = selected;
 };
 
-export const updateRandom = (state, datas) => {
-  state.random = state.random.concat(datas);
-};
-
 export const updateScrollY = (state, {
   type,
   scrollY,

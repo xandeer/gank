@@ -1,15 +1,15 @@
 <template lang='pug'>
-.results(v-infinite-scroll="loadMore", infinite-scroll-disabled="isLoading", infinite-scroll-distance="60")
-  ul
-    .beauty(v-if='type === "home"')
-      img(:src='beauty !== null ? beauty.url : ""')
-      p {{date}}
-    li(v-for='item in datas', v-if='item.type !== "福利"')
-      a(:href='item.url', target='_blank')
-        p(:style='{ color: color }') {{item.desc}}
-        p.info {{item.who}} · {{howLongAgo(item.publishedAt)}}
-    li(v-for='item in datas', v-if='type === "welfare"')
-      img(v-lazy='item.url')
+  .results(v-infinite-scroll="loadMore", infinite-scroll-disabled="isLoading", infinite-scroll-distance="60")
+    ul
+      .beauty(v-if='type === "home"')
+        img(:src='beauty !== null ? beauty.url : ""')
+        p {{date}}
+      li(v-for='item in datas', v-if='item.type !== "福利"')
+        a(:href='item.url', target='_blank')
+          p(:style='{ color: color }') {{item.desc}}
+          p.info {{item.who}} · {{howLongAgo(item.publishedAt)}}
+      li(v-for='item in datas', v-if='type === "welfare"')
+        img(v-lazy='item.url')
 </template>
 
 <script>
@@ -38,9 +38,6 @@ export default {
       return `${date.getFullYear()}/${date.getMonth() + 1}/${date.getDate()}`;
     },
     datas() {
-      if (this.type === 'random') {
-        return this.$store.state.random;
-      }
       return this.$store.state[this.type].datas;
     },
     color() {
@@ -55,9 +52,7 @@ export default {
     },
     howLongAgo,
     loadTop() {
-      if (this.type === 'random') {
-        this.$store.dispatch('randomAsync');
-      } else if (this.type === this.homeSelected) {
+      if (this.type === 'random' || this.type === this.homeSelected) {
         this.$store.dispatch('datasAsync', this.type);
       }
     },
@@ -74,6 +69,14 @@ export default {
 </script>
 
 <style lang='scss' scoped>
+.results {
+  padding: 50px 0;
+  height: 100vh;
+  margin-right: -100px;
+  padding-right: 100px;
+  overflow: auto;
+}
+
 ul {
   margin: 0;
   padding: 0;

@@ -2,7 +2,7 @@
 #discover
   mt-header(title='随机干货', fixed, :style='{backgroundColor: headerBg}')
   .container
-    contents(:type='"random"')
+    contents(:type='"random"', ref='random')
 </template>
 
 <script>
@@ -22,9 +22,25 @@ export default {
       return this.theme.headerBg;
     },
   },
+  mounted() {
+    console.log(this.$refs);
+    const container = this.$refs.random.$el;
+    const scrollY = this.$store.state.random.scrollY;
+
+    container.scrollTop = scrollY;
+  },
+  beforeDestroy() {
+    const container = this.$refs.random.$el;
+    this.$store.commit('updateScrollY', {
+      type: 'random',
+      scrollY: container.scrollTop,
+    });
+  },
 };
 </script>
 
-<stype lang="scss" scoped>
-
+<style lang="scss" scoped>
+.container {
+  overflow: hidden;
+}
 </style>

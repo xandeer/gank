@@ -1,7 +1,8 @@
 <template lang="pug">
   swiper(:options="swiperOption", ref='swiper')
     swiper-slide(v-for="slide in swiperSlides")
-      contents.container(:type='slide', :id='slide', :ref='slide')
+      .container
+        contents(:type='slide', :ref='slide')
     .swiper-pagination(slot="pagination", :style='theme')
 </template>
 
@@ -44,7 +45,7 @@ export default {
     swiperPlugins.debugger = function swiperCallback(swiper) {
       return {
         onSlideChangeStart() {
-          const container = that.$refs[that.homeSelected][0];
+          const container = that.$refs[that.homeSelected][0].$el;
           that.$store.commit('updateScrollY', {
             type: that.homeSelected,
             scrollY: container.scrollTop,
@@ -52,16 +53,16 @@ export default {
         },
         onSlideChangeEnd() {
           const type = that.swiperSlides[swiper.activeIndex];
-          const scrollY = that.$store.state[type].scrollY;
-          const container = that.$refs[that.homeSelected][0];
 
           that.$store.commit('updateHomeSelected', type);
 
+          const scrollY = that.$store.state[type].scrollY;
+          const container = that.$refs[type][0].$el;
+
           if (scrollY === 0 && that.$store.state[type].datas.length === 0) {
             that.$store.dispatch('datasAsync', type);
-          } else {
-            container.scrollTop = scrollY;
           }
+          container.scrollTop = scrollY;
         },
       };
     };
@@ -69,11 +70,15 @@ export default {
   mounted() {
     const swiper = this.$refs.swiper.swiper;
     const index = this.swiperSlides.indexOf(this.homeSelected);
-    const container = this.$refs[this.homeSelected][0].$el;
-    const scrollY = this.$store.state[this.homeSelected].scrollY;
+
+    for (let i = 0; i < this.swiperSlides.length; i += 1) {
+      const type = this.swiperSlides[i];
+      const container = this.$refs[type][0].$el;
+      const scrollY = this.$store.state[type].scrollY;
+      container.scrollTop = scrollY;
+    }
 
     swiper.slideTo(index, 0);
-    container.scrollTop = scrollY;
   },
   beforeDestroy() {
     const container = this.$refs[this.homeSelected][0].$el;
@@ -90,15 +95,10 @@ export default {
   width: 100%;
   height: 100%;
   margin: 0 auto;
-  overflow: hidden;
 }
 
 .container {
-  padding: 50px 0;
-  height: 100vh;
-  margin-right: -100px;
-  padding-right: 100px;
-  overflow: auto;
+  overflow: hidden;
 }
 
 .swiper-item {

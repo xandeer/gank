@@ -5,18 +5,22 @@ export const datasAsync = ({
   commit,
   state,
 }, type) => {
+  let url = 'http://gank.io/api/';
+  if (type === 'random') {
+    url += 'random/data/all/10';
+  } else {
+    url += `data/${state[type].type}/10/${state[type].page}`;
+  }
   commit('updateLoading', true);
-  Vue.http.get(
-      `http://gank.io/api/data/${state[type].type}/10/${state[type].page}`)
-    .then((response) => {
-      commit('updateDatas', {
-        datas: response.body.results,
-        type,
-      });
-      Vue.nextTick(() => {
-        commit('updateLoading', false);
-      });
+  Vue.http.get(url).then((response) => {
+    commit('updateDatas', {
+      datas: response.body.results,
+      type,
     });
+    Vue.nextTick(() => {
+      commit('updateLoading', false);
+    });
+  });
 };
 
 export const beautyAsync = ({
@@ -31,16 +35,4 @@ export const beautyAsync = ({
         commit('updateLoading', false);
       });
     });
-};
-
-export const randomAsync = ({
-  commit,
-}) => {
-  commit('updateLoading', true);
-  Vue.http.get('http://gank.io/api/random/data/all/10').then((response) => {
-    commit('updateRandom', response.body.results);
-    Vue.nextTick(() => {
-      commit('updateLoading', false);
-    });
-  });
 };
