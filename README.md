@@ -1,6 +1,6 @@
 # gank
 ---
-> 一个 `vue2` 实战项目，实现了一个 **gank.io** 资源的阅读应用。
+> 一个 `vue2` 实战项目，实现了一个 **gank.io** 资源的阅读应用。欢迎 star/fork。
 
 ## 用到的开源项目
 ***
@@ -20,7 +20,7 @@
 
 欢迎使用手机扫一扫打开：
 
-[gank![qrcode](assets/qrcode.png)](http://xandeer.me/gank)
+[![qrcode](assets/qrcode.png)](http://xandeer.me/gank)
 
 ## 实现的功能
 ***
@@ -75,6 +75,6 @@ npm run build --report
 
 ## 感谢
 ---
-- [gank.io 提供的 api](http://gank.io/api)
+- [gank.io](http://gank.io/api) 提供的 api
 - 开源项目贡献者
 - 开源项目文档撰写者
