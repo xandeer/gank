@@ -1,15 +1,13 @@
 import {
+  modes,
   themes,
 } from 'config';
 
-/* eslint-disable no-confusing-arrow */
-const theme = (state) => {
-  if (state.isNight) {
-    return themes.night;
-  }
-  return themes[state.themeType];
-};
+const mode = state => modes[state.modeType];
+
+const theme = state => themes[state.themeIndex];
 
 export default {
+  mode,
   theme,
 };

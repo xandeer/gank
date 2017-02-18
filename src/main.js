@@ -6,6 +6,7 @@ import VueAwesomeSwiper from 'vue-awesome-swiper';
 import {
   InfiniteScroll,
   Lazyload,
+  Button,
   Header,
   Tabbar,
   TabItem,
@@ -23,6 +24,7 @@ Vue.use(VueAwesomeSwiper);
 Vue.use(InfiniteScroll);
 Vue.use(Lazyload);
 
+Vue.component(Button.name, Button);
 Vue.component(Header.name, Header);
 Vue.component(Tabbar.name, Tabbar);
 Vue.component(TabItem.name, TabItem);

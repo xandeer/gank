@@ -1,6 +1,6 @@
 <template lang='pug'>
 #discover
-  mt-header(title='随机干货', fixed, :style='{backgroundColor: headerBg}')
+  mt-header(title='随机干货', fixed, :style='themeBg')
   .container
     contents(:type='"random"', ref='random')
 </template>
@@ -16,14 +16,16 @@ export default {
   },
   computed: {
     ...mapGetters([
+      'mode',
       'theme',
     ]),
-    headerBg() {
-      return this.theme.headerBg;
+    themeBg() {
+      return {
+        backgroundColor: this.theme,
+      };
     },
   },
   mounted() {
-    console.log(this.$refs);
     const container = this.$refs.random.$el;
     const scrollY = this.$store.state.random.scrollY;
 

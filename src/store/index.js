@@ -8,8 +8,8 @@ Vue.use(Vuex);
 
 const state = {
   isLoading: false,
-  isNight: false,
-  themeType: 'day',
+  modeType: 'day',
+  themeIndex: 0,
   homeSelected: 'home',
   beauty: null,
   random: {

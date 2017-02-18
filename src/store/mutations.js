@@ -4,13 +4,13 @@ export const updateLoading = (state, isLoading) => {
   state.isLoading = isLoading;
 };
 
-export const updateNight = (state, isNight) => {
-  state.isNight = isNight;
+// 只支持 ‘day’ | 'night'
+export const updateMode = (state, type) => {
+  state.modeType = type;
 };
 
-// 当前只支持 ‘day’ | 'night'
-export const updateTheme = (state, type) => {
-  state.themeType = type;
+export const updateThemeIndex = (state, index) => {
+  state.themeIndex = index;
 };
 
 export const updateDatas = (state, {

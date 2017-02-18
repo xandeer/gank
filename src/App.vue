@@ -1,12 +1,12 @@
 <template lang='pug'>
-#app(:style='theme')
+#app(:style='mode')
   mt-spinner.spinner(v-show='isLoading', type="fading-circle", color='#3193DE', :size='36')
   transition(name='fade', mode='out-in')
     router-view
-  mt-tabbar(v-model='selected', fixed, :style='theme')
-    mt-tab-item(id="home", href='#/home') 首页
-    mt-tab-item(id="discover", href='#/discover') 发现
-    mt-tab-item(id="my", href='#/my') 我的
+  mt-tabbar(v-model='selected', fixed, :style='mode', ref='tabbar')
+    mt-tab-item(id="0", href='#/home') 首页
+    mt-tab-item(id="1", href='#/discover') 发现
+    mt-tab-item(id="2", href='#/my') 我的
 </template>
 
 <script>
@@ -16,7 +16,7 @@ export default {
   name: 'app',
   data() {
     return {
-      selected: 'home',
+      selected: '0',
     };
   },
   computed: {
@@ -24,8 +24,31 @@ export default {
       'isLoading',
     ]),
     ...mapGetters([
+      'mode',
       'theme',
     ]),
+  },
+  methods: {
+    refreshTheme(index) {
+      const bars = this.$refs.tabbar.$children;
+      const selectedBar = bars[index].$el;
+
+      for (let i = 0; i < bars.length; i += 1) {
+        bars[i].$el.style.color = '#999';
+      }
+      selectedBar.style.color = this.theme;
+    },
+  },
+  watch: {
+    selected(index) {
+      this.refreshTheme(index);
+    },
+    theme() {
+      this.refreshTheme(this.selected);
+    },
+  },
+  mounted() {
+    this.refreshTheme(this.selected);
   },
 };
 </script>
@@ -57,12 +80,13 @@ body {
 
   .mint-tab-item.is-selected {
     background-color: inherit;
+    color: inherit;
   }
 }
 
 .mint-tab-item {
   padding: 10px 0;
-  color: #666;
+  color: #999;
 
   .mint-tab-item-label {
     font-size: 16px;

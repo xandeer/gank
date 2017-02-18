@@ -3,7 +3,7 @@
     swiper-slide(v-for="slide in swiperSlides")
       .container
         contents(:type='slide', :ref='slide')
-    .swiper-pagination(slot="pagination", :style='theme')
+    .swiper-pagination(slot="pagination", :style='mode')
 </template>
 
 <script>
@@ -11,7 +11,7 @@ import { mapGetters, mapState } from 'vuex';
 import { swiperPlugins } from 'vue-awesome-swiper';
 import contents from 'components/contents';
 
-const TAB_NAME = ['首页', '前端', ' iOS', 'Android', ' 福利'];
+const TAB_NAME = ['首页', '前端', 'iOS', 'Android', ' 福利'];
 
 export default {
   name: 'home',
@@ -20,6 +20,7 @@ export default {
   },
   computed: {
     ...mapGetters([
+      'mode',
       'theme',
     ]),
     ...mapState([
@@ -40,28 +41,39 @@ export default {
       swiperSlides: ['home', 'frontEnd', 'ios', 'android', 'welfare'],
     };
   },
+  methods: {
+    refreshTheme(swiper) {
+      const previousPagination = swiper.bullets[swiper.previousIndex];
+      const currentPagination = swiper.bullets[swiper.activeIndex];
+
+      previousPagination.style.color = '#999';
+      currentPagination.style.color = this.theme;
+      currentPagination.style.borderColor = this.theme;
+    },
+  },
   created() {
     const that = this;
     swiperPlugins.debugger = function swiperCallback(swiper) {
       return {
         onSlideChangeStart() {
           const container = that.$refs[that.homeSelected][0].$el;
+
           that.$store.commit('updateScrollY', {
             type: that.homeSelected,
             scrollY: container.scrollTop,
           });
+
+          that.refreshTheme(swiper);
         },
         onSlideChangeEnd() {
           const type = that.swiperSlides[swiper.activeIndex];
-
-          that.$store.commit('updateHomeSelected', type);
-
           const scrollY = that.$store.state[type].scrollY;
           const container = that.$refs[type][0].$el;
 
           if (scrollY === 0 && that.$store.state[type].datas.length === 0) {
             that.$store.dispatch('datasAsync', type);
           }
+          that.$store.commit('updateHomeSelected', type);
           container.scrollTop = scrollY;
         },
       };
@@ -78,6 +90,7 @@ export default {
       container.scrollTop = scrollY;
     }
 
+    this.refreshTheme(swiper);
     swiper.slideTo(index, 0);
   },
   beforeDestroy() {

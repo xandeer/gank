@@ -3,6 +3,7 @@ import Router from 'vue-router';
 import Home from 'views/home';
 import My from 'views/my';
 import Discover from 'views/discover';
+import Theme from 'components/theme';
 
 Vue.use(Router);
 
@@ -19,6 +20,10 @@ export default new Router({
     path: '/my',
     name: 'my',
     component: My,
+  }, {
+    path: '/my/theme',
+    name: 'theme',
+    component: Theme,
   }, {
     path: '*',
     component: Home,

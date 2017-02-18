@@ -31,7 +31,7 @@ export default {
       'homeSelected',
     ]),
     ...mapGetters([
-      'theme',
+      'mode',
     ]),
     date() {
       const date = new Date(this.beauty && this.beauty.publishedAt);
@@ -41,7 +41,7 @@ export default {
       return this.$store.state[this.type].datas;
     },
     color() {
-      return this.theme.color;
+      return this.mode.color;
     },
   },
 
@@ -110,7 +110,6 @@ a {
 
   max-height: 200px;
   overflow: hidden;
-  // box-shadow: 0 1px 1px rgba(34, 25, 25, 0.4);
   border-bottom: 1px solid #888;
   text-decoration: none;
 
