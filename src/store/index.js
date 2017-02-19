@@ -13,7 +13,7 @@ const state = {
   // 是否在请求数据
   isLoading: false,
   // 模式选择：day | night
-  modeType: 'day',
+  mode: 'day',
   // 当前主题颜色
   theme: themes[0],
   // 应用导航选择项：0 首页 | 1 发现 | 2 我的

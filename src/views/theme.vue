@@ -1,9 +1,9 @@
 <template lang="pug">
-#theme(:style='mode')
+#theme(:style='modeStyle')
   mt-header(title='主题色', fixed, :style='themeBg')
     router-link(:to="{name: 'my'}" slot="left")
       mt-button(icon="back")
-  .flex-container
+  .fixed-container
     .colors-container
       ul
         li.color-block(v-for='(color, index) in themes', :style='setItem(index)', @click='setTheme(color)')
@@ -23,7 +23,7 @@ export default {
   },
   computed: {
     ...mapGetters([
-      'mode',
+      'modeStyle',
     ]),
     ...mapState([
       'theme',
@@ -31,7 +31,8 @@ export default {
     themeBg() {
       return {
         backgroundColor: this.theme,
-        borderColor: this.mode.cellBg,
+        borderColor: this.modeStyle.cellBg,
+        opacity: this.modeStyle.opacity,
       };
     },
   },
@@ -52,33 +53,29 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 #theme {
   height: 100vh;
   width: 100%;
   z-index: 10;
   position: fixed;
+  padding-top: 50px;
 }
 
-.flex-container {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
-@media (orientation: landscape) {
-  .flex-container {
-    justify-content: flex-end;
-  }
+.fixed-container {
+  position: fixed;
+  padding-top: 50px;
+  width: 20em;
+  height: calc(20em + 50px);
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .colors-container {
   position: absolute;
-  width: 20em;
-  height: 20em;
+  width: 100%;
+  height: calc(100% - 50px);
   border-radius: 50%;
   overflow: hidden;
 

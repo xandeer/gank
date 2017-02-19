@@ -1,5 +1,5 @@
 <template lang='pug'>
-  .results(v-infinite-scroll="loadMore", infinite-scroll-disabled="isLoading", infinite-scroll-distance="60", :style='mode')
+  .results(v-infinite-scroll="loadMore", infinite-scroll-disabled="isLoading", infinite-scroll-distance="60", :style='modeStyle')
     ul
       .beauty(v-if='type === "home"')
         img(:src='beauty !== null ? beauty.url : ""')
@@ -31,7 +31,7 @@ export default {
       'homeSelected',
     ]),
     ...mapGetters([
-      'mode',
+      'modeStyle',
     ]),
     date() {
       const date = new Date(this.beauty && this.beauty.publishedAt);
@@ -41,7 +41,7 @@ export default {
       return this.$store.state[this.type].datas;
     },
     color() {
-      return this.mode.color;
+      return this.modeStyle.color;
     },
   },
   methods: {

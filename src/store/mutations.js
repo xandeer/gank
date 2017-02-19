@@ -6,7 +6,7 @@ export const updateLoading = (state, isLoading) => {
 
 // 只支持 ‘day’ | 'night'
 export const updateMode = (state, type) => {
-  state.modeType = type;
+  state.mode = type;
 };
 
 // 更新主题颜色

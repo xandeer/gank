@@ -3,8 +3,8 @@ import {
 } from 'config';
 
 // 返回模式相关样式属性对象
-const mode = state => modes[state.modeType];
+const modeStyle = state => modes[state.mode];
 
 export default {
-  mode,
+  modeStyle,
 };

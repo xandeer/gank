@@ -1,9 +1,10 @@
 <template lang='pug'>
-#app
+#app(:style='[modeStyle, {opacity: 1}]')
   mt-spinner.spinner(v-show='isLoading', type="fading-circle", :color='theme', :size='36')
-  transition(name='fade', mode='out-in')
-    router-view
-  mt-tabbar(v-model='selected', fixed, :style='mode', ref='tabbar')
+  //- 夜间模式太刺眼
+  //- transition(name='fade', mode='out-in')
+  router-view
+  mt-tabbar(v-model='selected', fixed, :style='[modeStyle, {opacity: 1}]', ref='tabbar')
     mt-tab-item(id="0", href='#/home') 首页
     mt-tab-item(id="1", href='#/discover') 发现
     mt-tab-item(id="2", href='#/my') 我的
@@ -26,7 +27,7 @@ export default {
       'appSelected',
     ]),
     ...mapGetters([
-      'mode',
+      'modeStyle',
     ]),
   },
   methods: {

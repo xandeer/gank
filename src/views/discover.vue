@@ -16,7 +16,7 @@ export default {
   },
   computed: {
     ...mapGetters([
-      'mode',
+      'modeStyle',
     ]),
     ...mapState([
       'theme',
@@ -24,6 +24,7 @@ export default {
     themeBg() {
       return {
         backgroundColor: this.theme,
+        opacity: this.modeStyle.opacity,
       };
     },
   },

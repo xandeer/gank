@@ -1,5 +1,5 @@
 <template lang="pug">
-#my(:style='mode')
+#my(:style='modeStyle')
   mt-header(title='我的', fixed, :style='themeBg')
   .my-container
     a.mint-cell.link-gank(href='http://gank.io', target='_blank', :style='cellBg')
@@ -28,24 +28,25 @@ export default {
   },
   computed: {
     ...mapState([
-      'modeType',
+      'mode',
       'theme',
     ]),
     ...mapGetters([
-      'mode',
+      'modeStyle',
     ]),
     themeBg() {
       return {
         backgroundColor: this.theme,
+        opacity: this.modeStyle.opacity,
       };
     },
     cellBg() {
       return {
-        backgroundColor: this.mode.cellBg,
+        backgroundColor: this.modeStyle.cellBg,
       };
     },
     isNight() {
-      return this.modeType === 'night';
+      return this.mode === 'night';
     },
   },
   watch: {
@@ -66,17 +67,11 @@ export default {
 
 <style lang="scss" scoped>
 #my {
-  background-color: #F4F4F4;
+  padding: 50px 0;
   height: 100vh;
   margin-right: -100px;
   padding-right: 100px;
   overflow: auto;
-}
-
-@media (orientation: landscape) {
-  #my {
-    height: 90vh;
-  }
 }
 
 .mint-cell {
@@ -97,7 +92,7 @@ export default {
   line-height: 100px;
   font-size: 20px;
   position: relative;
-  margin-top: 70px;
+  margin-top: 20px;
 
   .circle {
     display: inline-block;

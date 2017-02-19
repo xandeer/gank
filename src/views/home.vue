@@ -1,9 +1,9 @@
 <template lang="pug">
-  swiper(:options="swiperOption", ref='swiper', :style='mode')
+  swiper(:options="swiperOption", ref='swiper', :style='modeStyle')
     swiper-slide(v-for="slide in swiperSlides")
       .container
         contents(:type='slide', :ref='slide')
-    .swiper-pagination(slot="pagination", :style='mode')
+    .swiper-pagination(slot="pagination", :style='[modeStyle, {opacity: 1}]')
 </template>
 
 <script>
@@ -11,7 +11,7 @@ import { mapGetters, mapState } from 'vuex';
 import { swiperPlugins } from 'vue-awesome-swiper';
 import contents from 'components/contents';
 
-const TAB_NAME = ['首页', '前端', 'iOS', 'Android', ' 福利'];
+const TAB_NAME = ['首页', '前端', 'iOS', 'Android', '福利'];
 
 export default {
   name: 'home',
@@ -20,7 +20,7 @@ export default {
   },
   computed: {
     ...mapGetters([
-      'mode',
+      'modeStyle',
     ]),
     ...mapState([
       'theme',
@@ -44,7 +44,7 @@ export default {
   methods: {
     refreshTheme(swiper) {
       const previousPagination = swiper.bullets[swiper.previousIndex];
-      const currentPagination = swiper.bullets[swiper.activeIndex];
+      const currentPagination = swiper.bullets[swiper.realIndex];
 
       previousPagination.style.color = '#999';
       currentPagination.style.color = this.theme;
