@@ -68,7 +68,6 @@ export default {
   border-radius: 50%;
   transform: translate(-50%, -50%);
   overflow: hidden;
-  user-select: none;
 
   .choice-color {
     position: absolute;
@@ -97,6 +96,7 @@ export default {
     top: 50%;
     margin-left: -50%;
     margin-top: -50%;
+    -webkit-tap-highlight-color: transparent;
   }
 }
 
