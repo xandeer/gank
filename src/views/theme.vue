@@ -68,6 +68,7 @@ export default {
   border-radius: 50%;
   transform: translate(-50%, -50%);
   overflow: hidden;
+  user-select: none;
 
   .choice-color {
     position: absolute;
