@@ -16,7 +16,9 @@ const state = {
   modeType: 'day',
   // 当前主题颜色
   theme: themes[0],
-  // 首页展示项：home | frontEnd | ios | android | welfare
+  // 应用导航选择项：0 首页 | 1 发现 | 2 我的
+  appSelected: '0',
+  // 首页导航展示项：home | frontEnd | ios | android | welfare
   homeSelected: 'home',
   // 首页美女图片信息
   beauty: null,

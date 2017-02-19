@@ -9,6 +9,7 @@ export const updateMode = (state, type) => {
   state.modeType = type;
 };
 
+// 更新主题颜色
 export const updateTheme = (state, theme) => {
   state.theme = theme;
 };
@@ -24,6 +25,11 @@ export const updateDatas = (state, {
 
 export const updateBeauty = (state, beauty) => {
   state.beauty = beauty;
+};
+
+// 更新应用导航选项
+export const updateAppSelected = (state, selected) => {
+  state.appSelected = selected;
 };
 
 // 更新首页展示项

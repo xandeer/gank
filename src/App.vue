@@ -23,6 +23,7 @@ export default {
     ...mapState([
       'isLoading',
       'theme',
+      'appSelected',
     ]),
     ...mapGetters([
       'mode',
@@ -42,13 +43,18 @@ export default {
   watch: {
     selected(index) {
       this.refreshTheme(index);
+      this.$store.commit('updateAppSelected', index);
     },
     theme() {
       this.refreshTheme(this.selected);
     },
+    appSelected(selected) {
+      this.selected = selected;
+    },
   },
   mounted() {
     this.refreshTheme(this.selected);
+    this.selected = this.appSelected;
   },
 };
 </script>

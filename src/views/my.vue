@@ -59,6 +59,7 @@ export default {
   },
   created() {
     this.nightSwitch = this.isNight;
+    this.$store.commit('updateAppSelected', 2);
   },
 };
 </script>

@@ -32,6 +32,7 @@ export default {
     const scrollY = this.$store.state.random.scrollY;
 
     container.scrollTop = scrollY;
+    this.$store.commit('updateAppSelected', 1);
   },
   beforeDestroy() {
     const container = this.$refs.random.$el;

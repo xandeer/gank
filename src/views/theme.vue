@@ -53,16 +53,20 @@ export default {
 
 <style lang="scss">
 #theme {
-  overflow-y: hidden;
+  min-height: 100vh;
+  width: 100%;
+  z-index: 10;
+  position: fixed;
 }
 
 .colors-container {
-  position: relative;
-  margin-top: 150px;
-  margin: 150px auto;
+  position: absolute;
   width: 20em;
   height: 20em;
+  left: 50%;
+  top: 50%;
   border-radius: 50%;
+  transform: translate(-50%, -50%);
   overflow: hidden;
 
   .choice-color {
