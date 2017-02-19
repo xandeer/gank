@@ -9,8 +9,8 @@ export const updateMode = (state, type) => {
   state.modeType = type;
 };
 
-export const updateThemeIndex = (state, index) => {
-  state.themeIndex = index;
+export const updateTheme = (state, theme) => {
+  state.theme = theme;
 };
 
 // 更新数据缓存

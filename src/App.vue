@@ -1,6 +1,6 @@
 <template lang='pug'>
 #app(:style='mode')
-  mt-spinner.spinner(v-show='isLoading', type="fading-circle", color='#3193DE', :size='36')
+  mt-spinner.spinner(v-show='isLoading', type="fading-circle", :color='theme', :size='36')
   transition(name='fade', mode='out-in')
     router-view
   mt-tabbar(v-model='selected', fixed, :style='mode', ref='tabbar')
@@ -22,10 +22,10 @@ export default {
   computed: {
     ...mapState([
       'isLoading',
+      'theme',
     ]),
     ...mapGetters([
       'mode',
-      'theme',
     ]),
   },
   methods: {

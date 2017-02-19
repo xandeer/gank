@@ -29,10 +29,10 @@ export default {
   computed: {
     ...mapState([
       'modeType',
+      'theme',
     ]),
     ...mapGetters([
       'mode',
-      'theme',
     ]),
     themeBg() {
       return {

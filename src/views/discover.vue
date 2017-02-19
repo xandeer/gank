@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters, mapState } from 'vuex';
 import contents from 'components/contents';
 
 export default {
@@ -17,6 +17,8 @@ export default {
   computed: {
     ...mapGetters([
       'mode',
+    ]),
+    ...mapState([
       'theme',
     ]),
     themeBg() {

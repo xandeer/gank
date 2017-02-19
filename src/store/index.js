@@ -3,6 +3,9 @@ import Vuex from 'vuex';
 import * as mutations from './mutations';
 import * as actions from './actions';
 import getters from './getters';
+import {
+  themes,
+} from '../config';
 
 Vue.use(Vuex);
 
@@ -11,8 +14,8 @@ const state = {
   isLoading: false,
   // 模式选择：day | night
   modeType: 'day',
-  // 当前主题颜色索引值
-  themeIndex: 0,
+  // 当前主题颜色
+  theme: themes[0],
   // 首页展示项：home | frontEnd | ios | android | welfare
   homeSelected: 'home',
   // 首页美女图片信息

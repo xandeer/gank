@@ -21,9 +21,9 @@ export default {
   computed: {
     ...mapGetters([
       'mode',
-      'theme',
     ]),
     ...mapState([
+      'theme',
       'homeSelected',
     ]),
   },
