@@ -3,10 +3,11 @@
   mt-header(title='主题色', fixed, :style='themeBg')
     router-link(:to="{name: 'my'}" slot="left")
       mt-button(icon="back")
-  .colors-container
-    ul
-      li.color-block(v-for='(color, index) in themes', :style='setItem(index)', @click='setTheme(color)')
-    .choice-color(:style='themeBg')
+  .flex-container
+    .colors-container
+      ul
+        li.color-block(v-for='(color, index) in themes', :style='setItem(index)', @click='setTheme(color)')
+      .choice-color(:style='themeBg')
 </template>
 
 <script>
@@ -53,20 +54,32 @@ export default {
 
 <style lang="scss">
 #theme {
-  min-height: 100vmax;
+  height: 100vh;
   width: 100%;
   z-index: 10;
   position: fixed;
+}
+
+.flex-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+@media (orientation: landscape) {
+  .flex-container {
+    justify-content: flex-end;
+  }
 }
 
 .colors-container {
   position: absolute;
   width: 20em;
   height: 20em;
-  left: 50%;
-  top: 50%;
   border-radius: 50%;
-  transform: translate(-50%, -50%);
   overflow: hidden;
 
   .choice-color {

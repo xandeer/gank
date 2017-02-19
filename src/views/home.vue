@@ -1,5 +1,5 @@
 <template lang="pug">
-  swiper(:options="swiperOption", ref='swiper')
+  swiper(:options="swiperOption", ref='swiper', :style='mode')
     swiper-slide(v-for="slide in swiperSlides")
       .container
         contents(:type='slide', :ref='slide')

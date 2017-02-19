@@ -1,5 +1,5 @@
 <template lang='pug'>
-  .results(v-infinite-scroll="loadMore", infinite-scroll-disabled="isLoading", infinite-scroll-distance="60")
+  .results(v-infinite-scroll="loadMore", infinite-scroll-disabled="isLoading", infinite-scroll-distance="60", :style='mode')
     ul
       .beauty(v-if='type === "home"')
         img(:src='beauty !== null ? beauty.url : ""')

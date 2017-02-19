@@ -1,7 +1,7 @@
 <template lang="pug">
 #my(:style='mode')
   mt-header(title='我的', fixed, :style='themeBg')
-  .container
+  .my-container
     a.mint-cell.link-gank(href='http://gank.io', target='_blank', :style='cellBg')
       span.circle(:style='themeBg') Gank
       span Gank.io
@@ -67,7 +67,16 @@ export default {
 <style lang="scss" scoped>
 #my {
   background-color: #F4F4F4;
-  height: 100vmax;
+  height: 100vh;
+  margin-right: -100px;
+  padding-right: 100px;
+  overflow: auto;
+}
+
+@media (orientation: landscape) {
+  #my {
+    height: 90vh;
+  }
 }
 
 .mint-cell {
@@ -121,4 +130,5 @@ export default {
   margin-top: 20px;
   border-bottom: 1px solid #ccc;
 }
+
 </style>

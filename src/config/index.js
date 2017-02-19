@@ -11,6 +11,7 @@ const modes = {
     headerBg: '#26a2ff',
     color: '#ccc',
     cellBg: '#282c34',
+    opacity: 0.96,
   },
 };
 

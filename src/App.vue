@@ -1,5 +1,5 @@
 <template lang='pug'>
-#app(:style='mode')
+#app
   mt-spinner.spinner(v-show='isLoading', type="fading-circle", :color='theme', :size='36')
   transition(name='fade', mode='out-in')
     router-view
@@ -77,7 +77,7 @@ body {
   color: #2c3e50;
   min-height: 100vh;
   height: 100vh;
-  overflow-y: hidden;
+  overflow: hidden;
 }
 
 .mint-tabbar {
