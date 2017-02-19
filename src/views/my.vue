@@ -67,7 +67,7 @@ export default {
 <style lang="scss" scoped>
 #my {
   background-color: #F4F4F4;
-  height: 100vh;
+  height: 100vmax;
 }
 
 .mint-cell {

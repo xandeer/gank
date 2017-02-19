@@ -53,7 +53,7 @@ export default {
 
 <style lang="scss">
 #theme {
-  min-height: 100vh;
+  min-height: 100vmax;
   width: 100%;
   z-index: 10;
   position: fixed;
