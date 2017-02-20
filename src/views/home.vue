@@ -3,7 +3,7 @@
     swiper-slide(v-for="slide in swiperSlides")
       .container
         contents(:type='slide', :ref='slide')
-    .swiper-pagination(slot="pagination", :style='modeStyle', @load='reLoadPagination')
+    .swiper-pagination(slot="pagination", :style='modeStyle')
 </template>
 
 <script>
@@ -42,17 +42,14 @@ export default {
     };
   },
   methods: {
-    refreshTheme(swiper) {
+    refreshTheme() {
+      const swiper = this.$refs.swiper.swiper;
       const previousPagination = swiper.bullets[swiper.previousIndex];
       const currentPagination = swiper.bullets[swiper.activeIndex];
 
       previousPagination.style.color = '#999';
       currentPagination.style.color = this.theme;
       currentPagination.style.borderColor = this.theme;
-    },
-    reLoadPagination() {
-      const swiper = this.$refs.swiper.swiper;
-      this.refreshTheme(swiper);
     },
   },
   created() {
@@ -67,7 +64,7 @@ export default {
             scrollY: container.scrollTop,
           });
 
-          that.refreshTheme(swiper);
+          that.refreshTheme();
         },
         onSlideChangeEnd() {
           const type = that.swiperSlides[swiper.activeIndex];
@@ -96,13 +93,11 @@ export default {
 
     swiper.slideTo(index, 0);
     this.$nextTick(() => {
-      this.refreshTheme(swiper);
+      this.refreshTheme();
     });
 
-    // window 重绘之后会触发 swiper 注册的 resize 事件，重新渲染 pagination 组件，
-    window.addEventListener('resize', () => {
-      this.refreshTheme(swiper);
-    });
+    // window 重绘之后会触发 swiper 注册的 resize 事件，重新渲染 pagination 组件
+    window.addEventListener('resize', this.refreshTheme);
   },
   beforeDestroy() {
     const container = this.$refs[this.homeSelected][0].$el;
@@ -110,6 +105,7 @@ export default {
       type: this.homeSelected,
       scrollY: container.scrollTop,
     });
+    window.removeEventListener('resize', this.refreshTheme);
   },
 };
 </script>
