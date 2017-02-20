@@ -79,3 +79,7 @@ npm run build --report
 - [gank.io](http://gank.io/api) 提供的 api
 - 开源项目贡献者
 - 开源项目文档撰写者
+
+## License
+
+MIT License
