@@ -3,7 +3,7 @@
   mt-header(title='主题色', fixed, :style='themeBg')
     router-link(:to="{name: 'my'}" slot="left")
       mt-button(icon="back")
-  .fixed-container
+  .theme-container
     .colors-container
       ul
         li.color-block(v-for='(color, index) in themes', :style='setItem(index)', @click='setTheme(color)')
@@ -56,18 +56,22 @@ export default {
 <style lang="scss" scoped>
 #theme {
   height: 100vh;
-  width: 100%;
+  width: 100vw;
   z-index: 10;
   position: fixed;
   padding-top: 50px;
+  overflow: auto;
+  padding-right: 110vw;
+  margin-right: -110vw;
 }
 
-.fixed-container {
-  position: fixed;
-  padding-top: 50px;
+.theme-container {
+  position: absolute;
+  margin-right: 20vw;
+  padding-top: 150px;
   width: 20em;
-  height: calc(20em + 50px);
-  left: 50%;
+  height: calc(20em + 200px);
+  left: calc(50% - 5vw);
   top: 50%;
   transform: translate(-50%, -50%);
 }
@@ -75,7 +79,7 @@ export default {
 .colors-container {
   position: absolute;
   width: 100%;
-  height: calc(100% - 50px);
+  height: calc(100% - 200px);
   border-radius: 50%;
   overflow: hidden;
 
