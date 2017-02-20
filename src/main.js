@@ -3,6 +3,7 @@
 import Vue from 'vue';
 import VueResource from 'vue-resource';
 import VueAwesomeSwiper from 'vue-awesome-swiper';
+import VueLocalStorage from 'vue-localstorage';
 import {
   InfiniteScroll,
   Lazyload,
@@ -22,6 +23,7 @@ import store from './store';
 Vue.use(VueResource);
 Vue.use(VueAwesomeSwiper);
 Vue.use(InfiniteScroll);
+Vue.use(VueLocalStorage);
 Vue.use(Lazyload);
 
 Vue.component(Button.name, Button);
@@ -40,5 +42,15 @@ new Vue({
   template: '<App/>',
   components: {
     App,
+  },
+  localStorage: {
+    mode: {
+      type: String,
+      default: 'mode',
+    },
+    theme: {
+      type: String,
+      default: 'theme',
+    },
   },
 });

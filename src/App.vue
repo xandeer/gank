@@ -54,6 +54,16 @@ export default {
     },
   },
   mounted() {
+    const localMode = this.$localStorage.get('mode');
+    const localTheme = this.$localStorage.get('theme');
+
+    if (localMode !== 'mode') {
+      this.$store.commit('updateMode', localMode);
+    }
+    if (localTheme !== 'theme') {
+      this.$store.commit('updateTheme', localTheme);
+    }
+
     this.refreshTheme(this.selected);
     this.selected = this.appSelected;
   },

@@ -38,6 +38,7 @@ export default {
   methods: {
     setTheme(color) {
       this.$store.commit('updateTheme', color);
+      this.$localStorage.set('theme', color);
     },
     setItem(index) {
       const rotate = `${(index * 360) / this.themes.length}deg`;

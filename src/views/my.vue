@@ -52,9 +52,11 @@ export default {
     nightSwitch(val) {
       if (val) {
         this.$store.commit('updateMode', 'night');
+        this.$localStorage.set('mode', 'night');
         document.body.style.opacity = 0.9;
       } else {
         this.$store.commit('updateMode', 'day');
+        this.$localStorage.set('mode', 'day');
       }
     },
   },

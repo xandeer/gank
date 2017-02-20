@@ -44,7 +44,7 @@ export default {
   methods: {
     refreshTheme(swiper) {
       const previousPagination = swiper.bullets[swiper.previousIndex];
-      const currentPagination = swiper.bullets[swiper.realIndex];
+      const currentPagination = swiper.bullets[swiper.activeIndex];
 
       previousPagination.style.color = '#999';
       currentPagination.style.color = this.theme;
@@ -90,8 +90,10 @@ export default {
       container.scrollTop = scrollY;
     }
 
-    this.refreshTheme(swiper);
     swiper.slideTo(index, 0);
+    this.$nextTick(() => {
+      this.refreshTheme(swiper);
+    });
   },
   beforeDestroy() {
     const container = this.$refs[this.homeSelected][0].$el;
