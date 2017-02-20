@@ -3,7 +3,7 @@
     swiper-slide(v-for="slide in swiperSlides")
       .container
         contents(:type='slide', :ref='slide')
-    .swiper-pagination(slot="pagination", :style='modeStyle')
+    .swiper-pagination(slot="pagination", :style='modeStyle', @load='reLoadPagination')
 </template>
 
 <script>
@@ -50,6 +50,10 @@ export default {
       currentPagination.style.color = this.theme;
       currentPagination.style.borderColor = this.theme;
     },
+    reLoadPagination() {
+      const swiper = this.$refs.swiper.swiper;
+      this.refreshTheme(swiper);
+    },
   },
   created() {
     const that = this;
@@ -92,6 +96,11 @@ export default {
 
     swiper.slideTo(index, 0);
     this.$nextTick(() => {
+      this.refreshTheme(swiper);
+    });
+
+    // window 重绘之后会触发 swiper 注册的 resize 事件，重新渲染 pagination 组件，
+    window.addEventListener('resize', () => {
       this.refreshTheme(swiper);
     });
   },
