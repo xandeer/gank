@@ -3,7 +3,7 @@
     ul
       .beauty(v-if='type === "home"')
         img(:src='beauty !== null ? beauty.url : ""')
-        p {{date}}
+        .beauty-date {{date}}
       li(v-for='item in datas', v-if='item.type !== "福利"')
         a(:href='item.url', target='_blank')
           p(:style='{ color: color }') {{item.desc}}
@@ -85,13 +85,18 @@ ul {
 .beauty {
   position: relative;
 
-  p {
+  .beauty-date {
     position: absolute;
-    display: inline-block;
-    bottom: 10px;
-    right: 10px;
-    font-size: 1.2em;
-    color: #777;
+    width: 100%;
+    height: 2em;
+    line-height: 2em;
+    bottom: 0;
+    text-align: right;
+    padding-right: 1em;
+    font-size: 1.5em;
+    background-color: #000;
+    opacity: 0.4;
+    color: #ccc;
   }
 }
 
