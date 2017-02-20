@@ -37,7 +37,6 @@ export default {
     themeBg() {
       return {
         backgroundColor: this.theme,
-        opacity: this.modeStyle.opacity,
       };
     },
     cellBg() {
@@ -53,6 +52,7 @@ export default {
     nightSwitch(val) {
       if (val) {
         this.$store.commit('updateMode', 'night');
+        document.body.style.opacity = 0.9;
       } else {
         this.$store.commit('updateMode', 'day');
       }

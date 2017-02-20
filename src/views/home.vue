@@ -3,7 +3,7 @@
     swiper-slide(v-for="slide in swiperSlides")
       .container
         contents(:type='slide', :ref='slide')
-    .swiper-pagination(slot="pagination", :style='[modeStyle, {opacity: 1}]')
+    .swiper-pagination(slot="pagination", :style='modeStyle')
 </template>
 
 <script>

@@ -1,10 +1,10 @@
 <template lang='pug'>
-#app(:style='[modeStyle, {opacity: 1}]')
+#app(:style='modeStyle')
   mt-spinner.spinner(v-show='isLoading', type="fading-circle", :color='theme', :size='36')
   //- 夜间模式太刺眼
   //- transition(name='fade', mode='out-in')
   router-view
-  mt-tabbar(v-model='selected', fixed, :style='[modeStyle, {opacity: 1}]', ref='tabbar')
+  mt-tabbar(v-model='selected', fixed, :style='modeStyle', ref='tabbar')
     mt-tab-item(id="0", href='#/home') 首页
     mt-tab-item(id="1", href='#/discover') 发现
     mt-tab-item(id="2", href='#/my') 我的

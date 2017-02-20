@@ -32,7 +32,6 @@ export default {
       return {
         backgroundColor: this.theme,
         borderColor: this.modeStyle.cellBg,
-        opacity: this.modeStyle.opacity,
       };
     },
   },

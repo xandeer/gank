@@ -24,7 +24,6 @@ export default {
     themeBg() {
       return {
         backgroundColor: this.theme,
-        opacity: this.modeStyle.opacity,
       };
     },
   },

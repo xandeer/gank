@@ -4,14 +4,12 @@ const modes = {
     backgroundColor: '#f4f4f4',
     color: '#000',
     cellBg: '#fff',
-    opacity: 1,
   },
   night: {
     background: '#303030',
     backgroundColor: '#303030',
     color: '#ccc',
     cellBg: '#282c34',
-    opacity: 0.96,
   },
 };
 
