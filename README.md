@@ -36,6 +36,20 @@
 - 切换主题色
 - 等等
 
+### 首页
+
+![home](assets/home.png)
+
+### 滑动切换及位置保存
+
+![slide&position-store](assets/slide&position-store.gif)
+
+### 选择主题色及夜间模式
+
+> 主题色页面的色盘颜色可在 [src/config/index.js](src/config/index.js) 中改变，主题色及夜间模式会保存在 localStorage 中，所以下次打开还是之前的主题
+
+![mode&theme](assets/mode&theme.gif)
+
 ## 安装编译
 ***
 ### 注意
