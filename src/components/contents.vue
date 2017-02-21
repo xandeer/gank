@@ -1,15 +1,16 @@
-<template lang='pug'>
-  .results(v-infinite-scroll="loadMore", infinite-scroll-disabled="isLoading", infinite-scroll-distance="60", :style='modeStyle', :ref='type')
-    ul
-      .beauty(v-if='type === "home"')
-        img(:src='beauty !== null ? beauty.url : ""')
-        .beauty-date {{date}}
-      li(v-for='item in datas', v-if='item.type !== "福利"')
-        a(:href='item.url', target='_blank')
-          p(:style='{ color: color }') {{item.desc}}
-          p.info {{item.who}} · {{howLongAgo(item.publishedAt)}}
-      welfare(:datas='datas', v-if='type === "welfare"')
-    mt-spinner.spinner(v-show='isLoading', type="fading-circle", :color='theme', :size='36')
+<template>
+<div v-infinite-scroll="loadMore" infinite-scroll-disabled="isLoading" infinite-scroll-distance="60" :style="modeStyle" :ref="type" class="results">
+  <ul>
+    <div v-if="type === &quot;home&quot;" class="beauty"><img :src="beauty !== null ? beauty.url : &quot;&quot;"/>
+      <div class="beauty-date">{{date}}</div>
+    </div>
+    <li v-for="item in datas" v-if="item.type !== &quot;福利&quot;"><a :href="item.url" target="_blank">
+        <p :style="{ color: color }">{{item.desc}}</p>
+        <p class="info">{{item.who}} · {{howLongAgo(item.publishedAt)}}</p></a></li>
+    <welfare :datas="datas" v-if="type === &quot;welfare&quot;"></welfare>
+  </ul>
+  <mt-spinner v-show="isLoading" type="fading-circle" :color="theme" :size="36" class="spinner"></mt-spinner>
+</div>
 </template>
 
 <script>

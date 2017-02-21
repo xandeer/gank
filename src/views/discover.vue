@@ -1,8 +1,10 @@
-<template lang='pug'>
-#discover
-  mt-header(title='随机干货', fixed, :style='themeBg')
-  .container
-    contents(:type='"random"', ref='random')
+<template>
+<div id="discover">
+  <mt-header title="随机干货" fixed="fixed" :style="themeBg"></mt-header>
+  <div class="container">
+    <contents :type="&quot;random&quot;" ref="random"></contents>
+  </div>
+</div>
 </template>
 
 <script>

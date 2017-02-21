@@ -1,9 +1,12 @@
-<template lang="pug">
-  swiper(:options="swiperOption", ref='swiper', :style='modeStyle')
-    swiper-slide(v-for="slide in swiperSlides")
-      .container
-        contents(:type='slide', :ref='slide')
-    .swiper-pagination(slot="pagination", :style='modeStyle')
+<template>
+<swiper :options="swiperOption" ref="swiper" :style="modeStyle">
+  <swiper-slide v-for="slide in swiperSlides">
+    <div class="container">
+      <contents :type="slide" :ref="slide"></contents>
+    </div>
+  </swiper-slide>
+  <div slot="pagination" :style="modeStyle" class="swiper-pagination"></div>
+</swiper>
 </template>
 
 <script>

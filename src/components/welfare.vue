@@ -1,6 +1,7 @@
-<template lang="pug">
-.welfare
-  li.welfare-item(v-for='item in datas', :style='setBgImg(item.url)', @click='showMask(item.url)')
+<template>
+<div class="welfare">
+  <li v-for="item in datas" :style="setBgImg(item.url)" @click="showMask(item.url)" class="welfare-item"></li>
+</div>
 </template>
 
 <script>

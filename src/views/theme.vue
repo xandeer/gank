@@ -1,13 +1,19 @@
-<template lang="pug">
-#theme(:style='modeStyle')
-  mt-header(title='主题色', fixed, :style='themeBg')
-    router-link(:to="{name: 'my'}" slot="left")
-      mt-button(icon="back")
-  .theme-container
-    .colors-container
-      ul
-        li.color-block(v-for='(color, index) in themes', :style='setItem(index)', @click='setTheme(color)')
-      .choice-color(:style='themeBg')
+<template>
+<div id="theme" :style="modeStyle">
+  <mt-header title="主题色" fixed="fixed" :style="themeBg">
+    <router-link :to="{name: 'my'}" slot="left">
+      <mt-button icon="back"></mt-button>
+    </router-link>
+  </mt-header>
+  <div class="theme-container">
+    <div class="colors-container">
+      <ul>
+        <li v-for="(color, index) in themes" :style="setItem(index)" @click="setTheme(color)" class="color-block"></li>
+      </ul>
+      <div :style="themeBg" class="choice-color"></div>
+    </div>
+  </div>
+</div>
 </template>
 
 <script>

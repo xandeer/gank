@@ -1,15 +1,19 @@
-<template lang='pug'>
-#app(:style='modeStyle')
-  transition(name='fade', mode='out-in')
-    .mask(v-show='maskVisibility', @click='hideMask')
-      .mask-img
-        img(:src='maskImage')
-  transition(name='fade', mode='out-in')
-    router-view
-  mt-tabbar(v-model='selected', fixed, :style='modeStyle', ref='tabbar')
-    mt-tab-item(id="0", href='#/home') 首页
-    mt-tab-item(id="1", href='#/discover') 发现
-    mt-tab-item(id="2", href='#/my') 我的
+<template>
+<div id="app" :style="modeStyle">
+  <transition name="fade" mode="out-in">
+    <div v-show="maskVisibility" @click="hideMask" class="mask">
+      <div class="mask-img"><img :src="maskImage"/></div>
+    </div>
+  </transition>
+  <transition name="fade" mode="out-in">
+    <router-view></router-view>
+  </transition>
+  <mt-tabbar v-model="selected" fixed="fixed" :style="modeStyle" ref="tabbar">
+    <mt-tab-item id="0" href="#/home">首页</mt-tab-item>
+    <mt-tab-item id="1" href="#/discover">发现</mt-tab-item>
+    <mt-tab-item id="2" href="#/my">我的</mt-tab-item>
+  </mt-tabbar>
+</div>
 </template>
 
 <script>
@@ -77,7 +81,6 @@ export default {
     if (this.selected !== '0') {
       this.$nextTick(this.hideMask);
     }
-    // this.hideMask();
   },
 };
 </script>
@@ -147,7 +150,6 @@ body {
 
   .mask-img {
     flex: 1;
-    background-color: hsla(220, 7%, 25%, 0.8);
 
     img {
       width: 100%;

@@ -1,19 +1,9 @@
-<template lang="pug">
-#my(:style='modeStyle')
-  mt-header(title='我的', fixed, :style='themeBg')
-  .my-container
-    a.mint-cell.link-gank(href='http://gank.io', target='_blank', :style='cellBg')
-      span.circle(:style='themeBg') Gank
-      span Gank.io
-      span.mint-cell-allow-right
-    a.mint-cell.theme(href='#/my/theme', :style='cellBg') 主题颜色
-      span.mint-cell-allow-right
-    a.mint-cell.mode(:style='cellBg') 夜间模式
-      mt-switch.mode-switch(v-model='nightSwitch')
-    a.mint-cell.github(href='https://github.com/xandeer', target='_blank', :style='cellBg') Xandeer's Github
-      span.mint-cell-allow-right
-    a.mint-cell.source(href='https://github.com/xandeer/gank', target='_blank', :style='cellBg') 看看源码
-      span.mint-cell-allow-right
+<template>
+<div id="my" :style="modeStyle">
+  <mt-header title="我的" fixed="fixed" :style="themeBg"></mt-header>
+  <div class="my-container"><a href="http://gank.io" target="_blank" :style="cellBg" class="mint-cell link-gank"><span :style="themeBg" class="circle">Gank</span><span>Gank.io</span><span class="mint-cell-allow-right"></span></a><a href="#/my/theme" :style="cellBg" class="mint-cell theme">主题颜色<span class="mint-cell-allow-right"></span></a><a :style="cellBg" class="mint-cell mode">夜间模式
+      <mt-switch v-model="nightSwitch" class="mode-switch"></mt-switch></a><a href="https://github.com/xandeer" target="_blank" :style="cellBg" class="mint-cell github">Xandeer's Github<span class="mint-cell-allow-right"></span></a><a href="https://github.com/xandeer/gank" target="_blank" :style="cellBg" class="mint-cell source">看看源码<span class="mint-cell-allow-right"></span></a></div>
+</div>
 </template>
 
 <script>

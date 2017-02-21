@@ -52,8 +52,6 @@
     "node-sass": "^4.0.0",
     "opn": "^4.0.2",
     "ora": "^1.1.0",
-    "pug": "^2.0.0-beta10",
-    "pug-loader": "^2.3.0",
     "sass-loader": "^6.0.0",
     "semver": "^5.3.0",
     "shelljs": "^0.7.6",
