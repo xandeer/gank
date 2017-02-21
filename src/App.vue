@@ -71,13 +71,14 @@ export default {
       this.$store.commit('updateTheme', localTheme);
     }
   },
-  updated() {
+  mounted() {
     this.refreshTheme(this.selected);
     this.selected = this.appSelected;
+  },
+  updated() {
     if (this.selected !== '0') {
       this.$nextTick(this.hideMask);
     }
-    // this.hideMask();
   },
 };
 </script>
