@@ -1,6 +1,10 @@
 <template lang='pug'>
 #app(:style='modeStyle')
   transition(name='fade', mode='out-in')
+    .mask(v-show='maskVisibility', @click='hideMask')
+      .mask-img
+        img(:src='maskImage')
+  transition(name='fade', mode='out-in')
     router-view
   mt-tabbar(v-model='selected', fixed, :style='modeStyle', ref='tabbar')
     mt-tab-item(id="0", href='#/home') 首页
@@ -23,12 +27,17 @@ export default {
       'isLoading',
       'theme',
       'appSelected',
+      'maskVisibility',
+      'maskImage',
     ]),
     ...mapGetters([
       'modeStyle',
     ]),
   },
   methods: {
+    hideMask() {
+      this.$store.commit('updateMaskVisibility', false);
+    },
     refreshTheme(index) {
       const bars = this.$refs.tabbar.$children;
       const selectedBar = bars[index].$el;
@@ -62,9 +71,13 @@ export default {
       this.$store.commit('updateTheme', localTheme);
     }
   },
-  mounted() {
+  updated() {
     this.refreshTheme(this.selected);
     this.selected = this.appSelected;
+    if (this.selected !== '0') {
+      this.$nextTick(this.hideMask);
+    }
+    // this.hideMask();
   },
 };
 </script>
@@ -85,7 +98,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
-  min-height: 100vh;
   height: 100vh;
   overflow: hidden;
 }
@@ -121,5 +133,25 @@ body {
 }
 .fade-enter, .fade-leave-active {
   opacity: 0
+}
+
+.mask {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  z-index: 2;
+  background-color: hsla(220, 7%, 25%, 0.95);
+  display: flex;
+  align-items: center;
+
+  .mask-img {
+    flex: 1;
+    background-color: hsla(220, 7%, 25%, 0.8);
+
+    img {
+      width: 100%;
+    }
+  }
 }
 </style>

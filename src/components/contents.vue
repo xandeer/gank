@@ -8,17 +8,20 @@
         a(:href='item.url', target='_blank')
           p(:style='{ color: color }') {{item.desc}}
           p.info {{item.who}} · {{howLongAgo(item.publishedAt)}}
-      li(v-for='item in datas', v-if='type === "welfare"')
-        img(v-lazy='item.url')
+      welfare(:datas='datas', v-if='type === "welfare"')
     mt-spinner.spinner(v-show='isLoading', type="fading-circle", :color='theme', :size='36')
 </template>
 
 <script>
 import { mapState, mapGetters } from 'vuex';
 import { howLongAgo } from 'utils/date';
+import welfare from './welfare';
 
 export default {
   name: 'contents',
+  components: {
+    welfare,
+  },
   props: {
     type: {
       type: String,

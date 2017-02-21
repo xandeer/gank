@@ -22,6 +22,9 @@ const state = {
   homeSelected: 'home',
   // 首页美女图片信息
   beauty: null,
+  // 点击图片之后显示放大后的图片
+  maskImage: '',
+  maskVisibility: false,
 
   // 数据及页面位置缓存
   random: {

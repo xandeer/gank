@@ -1,7 +1,7 @@
 # gank
 ---
 
-[![Build Status](https://travis-ci.org/xandeer/gank.svg?branch=dev)](https://travis-ci.org/xandeer/gank)|
+[![Build Status](https://travis-ci.org/xandeer/gank.svg?branch=dev)](https://travis-ci.org/xandeer/gank)
 [![Dependency Status](https://www.versioneye.com/user/projects/58abe78eb4d2a20045c15823/badge.svg?style=flat-square)](https://www.versioneye.com/user/projects/58abe78eb4d2a20045c15823)
 
 > 一个 `vue2` 实战项目，实现了一个 **gank.io** 资源的阅读应用。欢迎 star/fork。

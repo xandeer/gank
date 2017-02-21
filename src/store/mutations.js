@@ -44,3 +44,11 @@ export const updateScrollY = (state, {
 }) => {
   state[type].scrollY = scrollY;
 };
+
+export const updateMaskVisibility = (state, visibility) => {
+  state.maskVisibility = visibility;
+};
+
+export const updateMaskImage = (state, url) => {
+  state.maskImage = url;
+};
