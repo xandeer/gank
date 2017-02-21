@@ -1,5 +1,10 @@
 # gank
 ---
+
+|Travis CI|
+|:-------:|
+|[![Build Status](https://travis-ci.org/xandeer/gank.svg?branch=dev)](https://travis-ci.org/xandeer/gank)|
+
 > 一个 `vue2` 实战项目，实现了一个 **gank.io** 资源的阅读应用。欢迎 star/fork。
 
 ## 用到的开源项目
