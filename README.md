@@ -16,7 +16,7 @@
 6. [vue-awesome-swiper](https://github.com/surmon-china/vue-awesome-swiper)
 7. [vue-cli](https://github.com/vuejs/vue-cli)
 8. [vuejs-templates/webpack](https://github.com/vuejs-templates/webpack)
-9. [pug](https://github.com/pugjs/pug)
+9. [pug](https://github.com/pugjs/pug) *本项目中 vue 模板使用 pug 书写，另外提供了 HTML 版本，可切换到 html 分支查看。*
 
 ## 预览
 ***
