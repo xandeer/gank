@@ -1,9 +1,7 @@
 <template lang='pug'>
 #app(:style='modeStyle')
-  mt-spinner.spinner(v-show='isLoading', type="fading-circle", :color='theme', :size='36')
-  //- 夜间模式太刺眼
-  //- transition(name='fade', mode='out-in')
-  router-view
+  transition(name='fade', mode='out-in')
+    router-view
   mt-tabbar(v-model='selected', fixed, :style='modeStyle', ref='tabbar')
     mt-tab-item(id="0", href='#/home') 首页
     mt-tab-item(id="1", href='#/discover') 发现
@@ -53,7 +51,7 @@ export default {
       this.selected = selected;
     },
   },
-  mounted() {
+  created() {
     const localMode = this.$localStorage.get('mode');
     const localTheme = this.$localStorage.get('theme');
 
@@ -63,7 +61,8 @@ export default {
     if (localTheme !== 'theme') {
       this.$store.commit('updateTheme', localTheme);
     }
-
+  },
+  mounted() {
     this.refreshTheme(this.selected);
     this.selected = this.appSelected;
   },
@@ -109,13 +108,6 @@ body {
     font-size: 16px;
     line-height: 30px;
   }
-}
-
-.spinner {
-  position: fixed;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, 50%);
 }
 
 .mint-header {

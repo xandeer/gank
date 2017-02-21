@@ -56,6 +56,13 @@ export default {
     const that = this;
     swiperPlugins.debugger = function swiperCallback(swiper) {
       return {
+        onPaginationRendered(swp, paginationContainer) {
+          const currentPagination = paginationContainer.childNodes[swp.activeIndex];
+          if (currentPagination) {
+            currentPagination.style.color = that.theme;
+            currentPagination.style.borderColor = that.theme;
+          }
+        },
         onSlideChangeStart() {
           const container = that.$refs[that.homeSelected][0].$el;
 
@@ -92,20 +99,15 @@ export default {
     }
 
     swiper.slideTo(index, 0);
-    this.$nextTick(() => {
-      this.refreshTheme();
-    });
-
-    // window 重绘之后会触发 swiper 注册的 resize 事件，重新渲染 pagination 组件
-    window.addEventListener('resize', this.refreshTheme);
   },
   beforeDestroy() {
     const container = this.$refs[this.homeSelected][0].$el;
+    const scrollY = container.scrollTop;
+
     this.$store.commit('updateScrollY', {
       type: this.homeSelected,
-      scrollY: container.scrollTop,
+      scrollY,
     });
-    window.removeEventListener('resize', this.refreshTheme);
   },
 };
 </script>
@@ -139,9 +141,8 @@ export default {
 }
 
 .swiper-pagination-bullet-custom.swiper-pagination-bullet-active {
-  color: #26a2ff;
   font-size: 18px;
-  border-bottom: 2px solid #26a2ff;
+  border-bottom: 2px solid transparent;
   background: inherit;
   background-color: inherit;
 }

@@ -1,5 +1,5 @@
 <template lang='pug'>
-  .results(v-infinite-scroll="loadMore", infinite-scroll-disabled="isLoading", infinite-scroll-distance="60", :style='modeStyle')
+  .results(v-infinite-scroll="loadMore", infinite-scroll-disabled="isLoading", infinite-scroll-distance="60", :style='modeStyle', :ref='type')
     ul
       .beauty(v-if='type === "home"')
         img(:src='beauty !== null ? beauty.url : ""')
@@ -10,6 +10,7 @@
           p.info {{item.who}} · {{howLongAgo(item.publishedAt)}}
       li(v-for='item in datas', v-if='type === "welfare"')
         img(v-lazy='item.url')
+    mt-spinner.spinner(v-show='isLoading', type="fading-circle", :color='theme', :size='36')
 </template>
 
 <script>
@@ -29,6 +30,7 @@ export default {
       'isLoading',
       'beauty',
       'homeSelected',
+      'theme',
     ]),
     ...mapGetters([
       'modeStyle',
@@ -121,5 +123,10 @@ a {
     color: #888;
     font-size: 14px;
   }
+}
+
+.spinner {
+  display: flex;
+  justify-content: center;
 }
 </style>
