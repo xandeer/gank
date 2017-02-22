@@ -6,6 +6,8 @@
 
 > 一个 `vue2` 实战项目，实现了一个 **gank.io** 资源的阅读应用。欢迎 star/fork。
 
+> [项目总结](http://xandeer.me/2017/02/Vue-%E5%88%9D%E4%BD%93%E9%AA%8C/)
+
 ## 用到的开源项目
 ***
 1. [vue](https://github.com/vuejs/vue)
