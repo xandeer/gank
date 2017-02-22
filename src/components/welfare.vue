@@ -40,17 +40,6 @@ export default {
     background-position: center;
     border: 2px solid hsla(220, 7%, 25%, 1.00);
   }
-
-  .welfare-mask {
-    width: 100vw;
-    height: 100vh;
-    position: fixed;
-    // position: absolute;
-    top: 0;
-    z-index: 99;
-    background-color: hsla(220, 7%, 25%, 0.9);
-    // background-color: #000;
-  }
 }
 
 </style>
