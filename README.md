@@ -24,7 +24,7 @@
 ***
 [demo](http://xandeer.me/gank)（请用手机模式预览）
 
-欢迎使用手机扫一扫打开：
+欢迎使用手机扫一扫打开，若微信中打不开请点击右上角用浏览器打开：
 
 [![qrcode](assets/qrcode.png)](http://xandeer.me/gank)
 
