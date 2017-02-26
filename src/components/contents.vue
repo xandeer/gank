@@ -1,9 +1,9 @@
 <template lang='pug'>
   .results(v-infinite-scroll="loadMore", infinite-scroll-disabled="isLoading", infinite-scroll-distance="60", :style='modeStyle', :ref='type')
     ul
-      .beauty(v-if='type === "home"')
-        img(:src='beauty !== null ? beauty.url : ""')
-        .beauty-date {{date}}
+      .beauty(v-if='type === "home" && beauty !== null')
+        img(:src='beauty.url', @load="beautyLoaded = true")
+        .beauty-date(v-if="beautyLoaded") {{date}}
       li(v-for='item in datas', v-if='item.type !== "福利"')
         a(:href='item.url', target='_blank')
           p(:style='{ color: color }') {{item.desc}}
@@ -27,6 +27,11 @@ export default {
       type: String,
       require: true,
     },
+  },
+  data() {
+    return {
+      beautyLoaded: false,
+    };
   },
   computed: {
     ...mapState([

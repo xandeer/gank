@@ -72,7 +72,6 @@ export default {
     }
   },
   mounted() {
-    this.refreshTheme(this.selected);
     this.selected = this.appSelected;
   },
   updated() {

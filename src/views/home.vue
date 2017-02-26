@@ -98,6 +98,7 @@ export default {
       container.scrollTop = scrollY;
     }
 
+    this.refreshTheme();
     swiper.slideTo(index, 0);
   },
   beforeDestroy() {
