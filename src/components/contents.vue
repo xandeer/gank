@@ -84,6 +84,7 @@ export default {
   margin-right: -100px;
   padding-right: 100px;
   overflow: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 ul {
