@@ -4,7 +4,7 @@ export const datasAsync = ({
   commit,
   state,
 }, type) => {
-  let url = 'http://gank.io/api/';
+  let url = 'https://gank.io/api/';
   if (type === 'random') {
     url += 'random/data/all/10';
   } else {
@@ -27,7 +27,7 @@ export const beautyAsync = ({
 }) => {
   commit('updateLoading', true);
   Vue.http.get(
-      'http://gank.io/api/data/福利/1/1')
+      'https://gank.io/api/data/福利/1/1')
     .then((response) => {
       commit('updateBeauty', response.body.results[0]);
       Vue.nextTick(() => {
