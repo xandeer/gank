@@ -6,7 +6,7 @@
 
 > 一个 `vue2` 实战项目，实现了一个 **gank.io** 资源的阅读应用。欢迎 star/fork。
 
-> [项目总结](http://xandeer.me/2017/02/Vue-%E5%88%9D%E4%BD%93%E9%AA%8C/)
+> [项目总结](https://xandeer.me/2017/02/Vue-%E5%88%9D%E4%BD%93%E9%AA%8C/)
 
 ## 用到的开源项目
 ***
@@ -22,19 +22,20 @@
 
 ## 预览
 ***
-[demo](http://xandeer.me/gank)（请用手机模式预览）
+[demo](https://xandeer.me/gank)（请用手机模式预览）
 
 欢迎使用手机扫一扫打开，若微信中打不开请点击右上角用浏览器打开：
 
-[![qrcode](assets/qrcode.png)](http://xandeer.me/gank)
+[![qrcode](assets/qrcode.png)](https://xandeer.me/gank)
 
 ## 实现的功能
 ***
 - 无限滚动
+- 夜间模式
 - 图片懒加载
 - 左右滑动切换
+- 多终端大小自适配(只考虑了 iOS)
 - 应用内跳转保存跳转前的位置
-- 夜间模式
 - 切换主题色（做成一个小[组件](https://github.com/xandeer/vue-circle-choice)了）
 - 等等
 
