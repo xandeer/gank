@@ -134,7 +134,7 @@ export default {
   height: 100% !important;
   margin:0 !important;
   text-align: center;
-  line-height: 50px;
+  line-height: 3em;
   color: #999999;
   background-color: inherit;
   border-radius: 0 !important;
@@ -142,7 +142,6 @@ export default {
 }
 
 .swiper-pagination-bullet-custom.swiper-pagination-bullet-active {
-  font-size: 18px;
   border-bottom: 2px solid transparent;
   background: inherit;
   background-color: inherit;
@@ -151,7 +150,8 @@ export default {
 .swiper-pagination {
   position: fixed;
   top: 0;
-  height: 50px;
+  font-size: 1.25em;
+  height: 3em;
   display: flex;
   flex-direction: row;
   justify-content: space-around;

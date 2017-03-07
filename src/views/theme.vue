@@ -3,7 +3,8 @@
   mt-header(title='主题色', fixed, :style='themeBg')
     router-link(:to="{name: 'my'}" slot="left")
       mt-button(icon="back")
-  choice-color(:colors='themes', radius="10em", @updateColor='setTheme')
+  .color-picker
+    choice-color(:colors='themes', radius="3.75rem", @updateColor='setTheme')
 </template>
 
 <script>
@@ -59,15 +60,14 @@ export default {
   width: 100vw;
   z-index: 10;
   position: fixed;
-  overflow: auto;
-  padding-right: 110vw;
-  margin-right: -110vw;
 }
 
-.theme-container {
-  left: calc(50% - 5vw);
-  @media screen and (orientation: landscape) {
-    margin-top: 25px;
-  }
+.color-picker {
+  position: absolute;
+  height: calc(100vh - 3em);
+  width: 100%;
+  top: 3em;
+  left: 50%;
+  transform: translateX(-50%);
 }
 </style>

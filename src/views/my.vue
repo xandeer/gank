@@ -69,43 +69,45 @@ export default {
 
 <style lang="scss" scoped>
 #my {
-  padding: 50px 0;
+  padding: 4em 0;
   height: 100vh;
-  margin-right: -100px;
-  padding-right: 100px;
+  margin-right: -20em;
+  padding-right: 20em;
   overflow: auto;
 }
 
 .mint-cell {
+  font-size: 1.5em;
   text-align: left;
   background-image: none;
-  height: 48px;
-  line-height: 48px;
-  padding-left: 20px;
+  height: 3em;
+  line-height: 3em;
+  padding-left: 1em;
 }
 
 .mint-cell-allow-right::after {
-  width: 10px;
-  height: 10px;
+  width: 1em;
+  height: 1em;
+  margin-right: 1em;
 }
 
 .link-gank {
-  height: 100px;
-  line-height: 100px;
-  font-size: 20px;
+  height: 5em;
+  line-height: 5em;
+  font-size: 1.5em;
   position: relative;
-  margin-top: 20px;
+  margin-top: 2em;
 
   .circle {
     display: inline-block;
-    width: 60px;
-    height: 60px;
-    line-height: 60px;
+    width: 4em;
+    height: 4em;
+    line-height: 4em;
     text-align: center;
     border-radius: 50%;
     background-color: #26a2ff;
     color: #fff;
-    margin-right: 20px;
+    margin-right: 1em;
   }
 }
 
@@ -114,18 +116,45 @@ export default {
 
   .mode-switch {
     display: inline-block;
-    width: 52px;
-    height: 32px;
+    width: 3.5em;
+    height: 1.8em;
     position: absolute;
-    right: 10px;
+    right: 1em;
     top: 50%;
     transform: translateY(-50%);
   }
 }
 
 .github, .theme {
-  margin-top: 20px;
+  margin-top: 2em;
   border-bottom: 1px solid #ccc;
 }
+</style>
 
+<style lang="scss">
+.mint-switch-core {
+  width: 100%;
+  height: 100%;
+  border-radius: 1.5em;
+  line-height: 1.5em;
+
+  &:before {
+    width: calc(100% - 2px);
+    height: calc(100% - 2px);
+    border-radius: calc(1.5em - 1px);
+    margin-top: 1px;
+    margin-left: 1px;
+  }
+  &:after {
+    width: calc(50% - 2px);
+    height: calc(100% - 2px);
+    border-radius: 50%;
+    margin-top: 1px;
+    margin-left: 1px;
+  }
+}
+
+.mint-switch-input:checked + .mint-switch-core::after {
+  transform: translateX(calc(100% + 2px));
+}
 </style>

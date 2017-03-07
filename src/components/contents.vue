@@ -9,7 +9,7 @@
           p(:style='{ color: color }') {{item.desc}}
           p.info {{item.who}} · {{howLongAgo(item.publishedAt)}}
       welfare(:datas='datas', v-if='type === "welfare"')
-    mt-spinner.spinner(v-show='isLoading', type="fading-circle", :color='theme', :size='36')
+    mt-spinner.spinner(v-show='isLoading', type="fading-circle", :color='theme', :size='48')
 </template>
 
 <script>
@@ -79,7 +79,8 @@ export default {
 
 <style lang='scss' scoped>
 .results {
-  padding: 50px 0;
+  padding: 3em 0;
+  padding-bottom: 4em;
   height: 100vh;
   margin-right: -100px;
   padding-right: 100px;
@@ -118,19 +119,22 @@ img {
 }
 
 a {
-  padding: 10px 15px;
+  padding: 0.5em 2em;
   text-align: left;
   display: block;
   width: 100%;
+  font-size: 0.8em;
 
-  max-height: 200px;
-  overflow: hidden;
   border-bottom: 1px solid #888;
   text-decoration: none;
 
   .info {
     color: #888;
-    font-size: 14px;
+    font-size: 0.7em;
+  }
+
+  p {
+    margin: 0.5em 0;
   }
 }
 

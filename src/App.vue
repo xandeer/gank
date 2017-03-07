@@ -8,12 +8,16 @@
     router-view
   mt-tabbar(v-model='selected', fixed, :style='modeStyle', ref='tabbar')
     mt-tab-item(id="0", href='#/home') 首页
+      span.iconfont.icon-home(slot="icon")
     mt-tab-item(id="1", href='#/discover') 发现
+      span.iconfont.icon-discover(slot="icon")
     mt-tab-item(id="2", href='#/my') 我的
+      span.iconfont.icon-my(slot="icon")
 </template>
 
 <script>
 import { mapState, mapGetters } from 'vuex';
+import { setFlex } from './utils/flexible';
 
 export default {
   name: 'app',
@@ -72,6 +76,7 @@ export default {
     }
   },
   mounted() {
+    setFlex(window, window.lib || (window.lib = {}));
     this.refreshTheme(this.selected);
     this.selected = this.appSelected;
   },
@@ -84,6 +89,9 @@ export default {
 </script>
 
 <style lang='scss'>
+@import url('//at.alicdn.com/t/font_0j6ycruegu7q4cxr.css');
+// @import './style/common';
+
 * {
   box-sizing: border-box;
 }
@@ -104,7 +112,7 @@ body {
 }
 
 .mint-tabbar {
-  height: 50px;
+  height: 4em;
   box-shadow: 0 -1px 0px rgba(34, 25, 25, 0.4);
 
   .mint-tab-item.is-selected {
@@ -114,19 +122,16 @@ body {
 }
 
 .mint-tab-item {
-  padding: 10px 0;
   color: #999;
 
   .mint-tab-item-label {
-    font-size: 16px;
-    line-height: 30px;
+    font-size: 0.9em;
   }
-}
-
-.mint-header {
-  height: 50px;
-  font-size: 18px;
-  letter-spacing: 0.5em;
+  .mint-tab-item-icon {
+    width: 2em;
+    height: 2em;
+    margin-bottom: 0.5em;
+  }
 }
 
 .fade-enter-active, .fade-leave-active {
@@ -155,4 +160,29 @@ body {
     }
   }
 }
+
+.iconfont {
+  text-align: center;
+  font-size: 2em;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+.mint-header{
+  font-size: 1.5em;
+  height: 2em;
+}
+
+.mint-header-button {
+  height: 2em;
+  .mint-button {
+    height: 100%;
+    .mintui {
+      font-size: 1em;
+    }
+  }
+}
+
 </style>
