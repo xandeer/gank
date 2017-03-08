@@ -123,18 +123,17 @@ a {
   text-align: left;
   display: block;
   width: 100%;
-  font-size: 0.8em;
-
   border-bottom: 1px solid #888;
   text-decoration: none;
+
+  p {
+    margin: 0.5em 0;
+    font-size: 0.8em;
+  }
 
   .info {
     color: #888;
     font-size: 0.7em;
-  }
-
-  p {
-    margin: 0.5em 0;
   }
 }
 

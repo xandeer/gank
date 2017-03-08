@@ -104,6 +104,8 @@ body {
   padding: 0;
   margin: 0;
   text-align: center;
+  height: 100vh;
+  overflow: hidden;
 }
 
 #app {
@@ -111,8 +113,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
-  height: 100vh;
-  overflow: hidden;
 }
 
 .mint-tabbar {
