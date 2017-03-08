@@ -90,7 +90,6 @@ export default {
 
 <style lang='scss'>
 @import url('//at.alicdn.com/t/font_0j6ycruegu7q4cxr.css');
-// @import './style/common';
 
 * {
   box-sizing: border-box;
@@ -109,6 +108,14 @@ body {
   color: #2c3e50;
   height: 100vh;
   overflow: hidden;
+  font-size: 12px;
+  
+  [data-dpr="2"] & {
+    font-size: 24px;
+  }
+  [data-dpr="3"] & {
+    font-size: 36px;
+  }
 }
 
 .mint-tabbar {
