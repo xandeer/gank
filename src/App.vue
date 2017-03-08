@@ -51,12 +51,12 @@ export default {
       }
       selectedBar.style.color = this.theme;
     },
-  },
-  watch: {
-    selected(index) {
+    setSelected(index) {
       this.refreshTheme(index);
       this.$store.commit('updateAppSelected', index);
     },
+  },
+  watch: {
     theme() {
       this.refreshTheme(this.selected);
     },
@@ -84,6 +84,11 @@ export default {
     if (this.selected !== '0') {
       this.$nextTick(this.hideMask);
     }
+
+    const index = ['home', 'discover', 'my'].indexOf(this.$route.name);
+    if (index !== -1) {
+      this.setSelected(index);
+    }
   },
 };
 </script>
@@ -108,14 +113,6 @@ body {
   color: #2c3e50;
   height: 100vh;
   overflow: hidden;
-  font-size: 12px;
-  
-  [data-dpr="2"] & {
-    font-size: 24px;
-  }
-  [data-dpr="3"] & {
-    font-size: 36px;
-  }
 }
 
 .mint-tabbar {
@@ -179,11 +176,10 @@ a {
 
 .mint-header{
   font-size: 1.5em;
-  height: 2em;
+  height: calc(2em * 1.25);
 }
 
 .mint-header-button {
-  height: 2em;
   .mint-button {
     height: 100%;
     .mintui {

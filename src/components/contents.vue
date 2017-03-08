@@ -79,7 +79,7 @@ export default {
 
 <style lang='scss' scoped>
 .results {
-  padding: 3em 0;
+  margin: calc(3em * 1.25) 0;
   padding-bottom: 4em;
   height: 100vh;
   margin-right: -100px;
