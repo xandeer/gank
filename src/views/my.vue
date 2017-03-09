@@ -70,9 +70,6 @@ export default {
 <style lang="scss" scoped>
 #my {
   padding: 4em 0;
-  height: 100vh;
-  margin-right: -20em;
-  padding-right: 20em;
   overflow: auto;
 }
 

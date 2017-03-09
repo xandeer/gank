@@ -4,7 +4,7 @@
     router-link(:to="{name: 'my'}" slot="left")
       mt-button(icon="back")
   .color-picker
-    choice-color(:colors='themes', radius="3.75rem", @updateColor='setTheme')
+    choice-color(:colors='themes', :radius="radius", @updateColor='setTheme')
 </template>
 
 <script>
@@ -20,6 +20,7 @@ export default {
   data() {
     return {
       themes,
+      radius: '3.75rem',
     };
   },
   computed: {
@@ -51,6 +52,11 @@ export default {
       };
     },
   },
+  created() {
+    window.addEventListener('resize', () => {
+      this.radius = window.innerHeight < window.innerWidth ? '2.75rem' : '3.75rem';
+    });
+  },
 };
 </script>
 
@@ -64,9 +70,9 @@ export default {
 
 .color-picker {
   position: absolute;
-  height: calc(100vh - 3em);
+  height: calc(100vh - 3em * 1.25);
   width: 100%;
-  top: 3em;
+  top: calc(3em * 1.25);
   left: 50%;
   transform: translateX(-50%);
 }

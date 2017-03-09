@@ -118,6 +118,7 @@ export default {
   width: 100%;
   height: 100%;
   margin: 0 auto;
+  position: absolute;
 }
 
 .container {
@@ -148,7 +149,8 @@ export default {
 }
 
 .swiper-pagination {
-  position: fixed;
+  // position: fixed;
+  position: absolute;
   top: 0;
   font-size: 1.25em;
   height: 3em;

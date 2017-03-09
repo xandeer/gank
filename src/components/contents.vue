@@ -105,7 +105,7 @@ ul {
     bottom: 0;
     text-align: right;
     padding-right: 1em;
-    font-size: 1.5em;
+    font-size: 2em;
     background-color: #000;
     opacity: 0.4;
     color: #ccc;
@@ -128,12 +128,12 @@ a {
 
   p {
     margin: 0.5em 0;
-    font-size: 0.8em;
+    font-size: 1.2em;
   }
 
   .info {
     color: #888;
-    font-size: 0.7em;
+    font-size: 1em;
   }
 }
 

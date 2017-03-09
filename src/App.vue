@@ -104,8 +104,6 @@ body {
   padding: 0;
   margin: 0;
   text-align: center;
-  height: 100vh;
-  overflow: hidden;
 }
 
 #app {
