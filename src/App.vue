@@ -110,6 +110,7 @@ body {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  -webkit-tap-highlight-color: transparent;
   color: #2c3e50;
 }
 
@@ -137,10 +138,10 @@ body {
 }
 
 .fade-enter-active, .fade-leave-active {
-  transition: opacity .3s
+  transition: opacity .3s;
 }
 .fade-enter, .fade-leave-active {
-  opacity: 0
+  opacity: 0;
 }
 
 .mask {
