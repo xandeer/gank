@@ -9,7 +9,7 @@
 
 <script>
 import { mapGetters, mapState } from 'vuex';
-import choiceColor from 'vue-circle-choice';
+import { choiceColor } from 'vue-circle-choice';
 import { themes } from '../config';
 
 export default {
